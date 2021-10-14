@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F91D3734-5012-4AD0-AEAF-D51680F7C2CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projeto.Infra</RootNamespace>
+    <AssemblyName>Projeto.Infra</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.BulkInsert, Version=0.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.BulkInsert.1.5\lib\Net45\EntityFramework.BulkInsert.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.MappingAPI.1.1\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContext\ArquivoPropostaDigital.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ArquivoPropostaDigitalDetalhe.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ControleDataBatch.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ControleDataSistema.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\CorretorVigencia.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Emissao.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\PlanoAssistenciaSenior.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Produto.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_BENEFICIARIO.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_DETALHE_REGISTRO.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_DOMINIO_CAMPO.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_ERRO_REGISTRO.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_LOG_PROCESSAMENTO.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_REGISTRO_PROCESSAMENTO.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\VigCaractProduto.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrigemVenda.cs" />
+    <Compile Include="DataContext\AtivPessoa.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Colaborador.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ControleProposta.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\DigitacaoContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DigitacaoContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\DigitacaoContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\DigitacaoContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DigitacaoContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\InterfaceSinafCobertura.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Pessoa.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SiesContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiesContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SiesContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\SiesContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiesContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_CLIENTE.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_CLIENTE_EMAIL.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_CLIENTE_ENDERECO.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_CLIENTE_TELEFONE.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_DADOS_BANCARIOS.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_DADOS_CARTAO.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_PROPOSTA.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\TB_RESP_PERG_PROPOSTA.cs">
+      <DependentUpon>DigitacaoContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\UnidadeCorretora.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\vPlanoInd.cs">
+      <DependentUpon>SiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropostaDao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DataContext\DigitacaoContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DigitacaoContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataContext\DigitacaoContext.edmx.diagram">
+      <DependentUpon>DigitacaoContext.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="DataContext\SiesContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SiesContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataContext\SiesContext.edmx.diagram">
+      <DependentUpon>SiesContext.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Projeto.Domain\Projeto.Domain.csproj">
+      <Project>{007f0ff7-b282-4075-812c-2cae35d4296f}</Project>
+      <Name>Projeto.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataContext\DigitacaoContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DigitacaoContext.edmx</DependentUpon>
+      <LastGenOutput>DigitacaoContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataContext\DigitacaoContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DigitacaoContext.edmx</DependentUpon>
+      <LastGenOutput>DigitacaoContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataContext\SiesContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SiesContext.edmx</DependentUpon>
+      <LastGenOutput>SiesContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataContext\SiesContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SiesContext.edmx</DependentUpon>
+      <LastGenOutput>SiesContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

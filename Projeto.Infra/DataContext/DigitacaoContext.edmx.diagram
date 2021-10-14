@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4ae750021b8d4bc895c370208937a3ff" Name="Diagram1" ZoomLevel="41">
+        <EntityTypeShape EntityType="DigitacaoModel.TB_CLIENTE" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_CLIENTE_EMAIL" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_CLIENTE_ENDERECO" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_CLIENTE_TELEFONE" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_PROPOSTA" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="DigitacaoModel.FK__TB_CLIENTE__5B0E7E4A" ManuallyRouted="false" />
+        <AssociationConnector Association="DigitacaoModel.FK__TB_CLIENTE_EMAIL__5832119F" ManuallyRouted="false" />
+        <AssociationConnector Association="DigitacaoModel.FK__TB_CLIENTE_ENDER__573DED66" ManuallyRouted="false" />
+        <AssociationConnector Association="DigitacaoModel.FK__TB_CLIENTE_TELEF__592635D8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_DADOS_BANCARIOS" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_DADOS_CARTAO" Width="1.5" PointX="3" PointY="18.125" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_RESP_PERG_PROPOSTA" Width="1.5" PointX="5.25" PointY="14.75" />
+        <AssociationConnector Association="DigitacaoModel.FK__TB_RESP_PERG_PRO__5A1A5A11" />
+        <AssociationConnector Association="DigitacaoModel.FK_TB_DADOS_BANCARIOS" />
+        <AssociationConnector Association="DigitacaoModel.FK__TB_DADOS_CARTAO__5C02A283" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_BENEFICIARIO" Width="1.5" PointX="3" PointY="24.375" />
+        <AssociationConnector Association="DigitacaoModel.FK__TB_BENEFICIARIO__5C02A283" />
+        <EntityTypeShape EntityType="DigitacaoModel.TB_DOMINIO_CAMPO" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

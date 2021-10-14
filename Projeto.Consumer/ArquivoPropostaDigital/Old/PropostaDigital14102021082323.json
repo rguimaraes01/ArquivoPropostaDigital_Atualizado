@@ -1,0 +1,166 @@
+[
+  {
+    "externalKey": "b15ae8c0-710c-4e8d-80b8-c27cd75668b4",
+    "nomeProduto": "SINAF ASSISTÊNCIA SENIOR NV",
+    "numeroContrato": 1623,
+    "numeroApolice": "2000/982/570",
+    "processoSusep": "PROC SUSEP Nº 15.414002659/2006-18",
+    "statusProposta": "Liberada",
+    "nome": "LUIZ CARLOS PEREIRA DA CONCEICAO",
+    "cpf": "58595988749",
+    "vencimento": "03/04/2021",
+    "proposta": 2026844,
+    "tipoComunicacao": "Digital",
+    "titular": {
+      "nomeSegurado": "LUIZ CARLOS PEREIRA DA CONCEICAO",
+      "sexo": "Masculino",
+      "cpf": "58595988749",
+      "rg": "042251975",
+      "orgaoExpedidor": "DETRAN",
+      "dataExpedicao": "19/09/2016",
+      "dataNascimento": "14/03/1957",
+      "estadoCivil": "Solteiro",
+      "rendaFamiliar": "2.000,00",
+      "cep": "26013060",
+      "endereco": "R DO TRABALHO",
+      "numero": 151,
+      "complemento": "",
+      "bairro": "RANCHO NOVO",
+      "cidade": "N IGUACU",
+      "uf": "RJ",
+      "referencia": "",
+      "celular": "(21)99053-7777",
+      "whatsApp": "S",
+      "residencial": "",
+      "comercial": "",
+      "profissao": "Auxiliar de Enfermagem",
+      "codigoProfissao": "AUX043",
+      "email": "adrianagomes.costa@hotmail.com",
+      "assistenciaFuneral": "Superior",
+      "plano": "Individual",
+      "coberturas": {
+        "capitalSeguradoMorteAcidencial": "2.500,00",
+        "valorPremioAcidentesPessoais": "34,11",
+        "capitalSeguradoAssistenciaEmergencial": null,
+        "valorPremioAssistenciaEmergencial": null,
+        "rendaMensal": {
+          "prazo": 0,
+          "valorParcela": "0,00",
+          "capitalSegurado": "0,00",
+          "valorPremioRendaMensal": "0,00"
+        }
+      }
+    },
+    "conjuge": {
+      "nomeSegurado": null,
+      "sexo": null,
+      "cpf": null,
+      "dataNascimento": null,
+      "profissao": null,
+      "codigoProfissao": null,
+      "coberturas": {
+        "plano": null,
+        "capitalSeguradoMorteAcidencial": null,
+        "valorPremioAcidentesPessoais": null,
+        "capitalSeguradoAssistenciaEmergencial": null,
+        "valorPremioAssistenciaEmergencial": null,
+        "rendaMensal": {
+          "prazo": 0,
+          "valorParcela": null,
+          "capitalSegurado": null,
+          "valorPremioRendaMensal": null
+        }
+      }
+    },
+    "filhos": null,
+    "agregados": null,
+    "calculoPremioTotal": {
+      "vencimento": "03/04/2021",
+      "valorPremioAcidentesPessoais": "34,11",
+      "valorPremioAgregados": "0,00",
+      "valorPremioRendaMensal": "0,00",
+      "valorPremioTotal": "34,11"
+    },
+    "dadosCorretor": {
+      "angariador": "JANIEL PATRICIO DE MORAIS",
+      "codigoAngariador": 4859,
+      "unidade": "BAIXADA",
+      "coordenador": "",
+      "corretor": "VITAL LATINA CORRETORA DE SEGUROS S/A",
+      "registroSUSEP": 202046244
+    },
+    "declaracaoPessoalSaude": {
+      "perguntasRespostas": [
+        {
+          "tipoSegurado": "Principal",
+          "perguntaRespostaDPS": [
+            {
+              "codigoPergunta": 1,
+              "resposta": "Sim",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 2,
+              "resposta": "Não",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 3,
+              "resposta": "Não",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 4,
+              "resposta": "Não",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 5,
+              "resposta": "Não",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 6,
+              "resposta": "Não",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 7,
+              "resposta": "Não",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 8,
+              "resposta": "Não",
+              "justificativa": ""
+            },
+            {
+              "codigoPergunta": 9,
+              "resposta": "Não",
+              "justificativa": ""
+            }
+          ]
+        }
+      ],
+      "filhoBeneficiario": "N",
+      "dependenteAgregado": "N",
+      "conjugeProponente": "N"
+    },
+    "beneficiarios": [],
+    "valorPremioAgregados": "0,00",
+    "origemVenda": "",
+    "formaPagamento": {
+      "primeiraParcela": "Boleto",
+      "demaisParcelas": "Boleto",
+      "dadosDebito": null
+    },
+    "data": "20/03/2021",
+    "final": {
+      "Local": "N IGUACU",
+      "Telefone": "(21)99053-7777",
+      "DataHora": "20/03/2021 00:00:00",
+      "Meio": "",
+      "AceiteDigital": "N"
+    }
+  }
+]

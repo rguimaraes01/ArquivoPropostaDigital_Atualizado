@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{007F0FF7-B282-4075-812C-2CAE35D4296F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projeto.Domain</RootNamespace>
+    <AssemblyName>Projeto.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.BulkInsert, Version=0.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.BulkInsert.1.5\lib\Net45\EntityFramework.BulkInsert.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.MappingAPI.1.1\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entidades\Agregados.cs" />
+    <Compile Include="Entidades\Beneficiario.cs" />
+    <Compile Include="Entidades\CalculoPremioTotal.cs" />
+    <Compile Include="Entidades\CoberturaConjuge.cs" />
+    <Compile Include="Entidades\CoberturaTitular.cs" />
+    <Compile Include="Entidades\Conjuge.cs" />
+    <Compile Include="Entidades\Titular.cs" />
+    <Compile Include="Entidades\DadosCorretor.cs" />
+    <Compile Include="Entidades\DadosDebito.cs" />
+    <Compile Include="Entidades\DeclaracaoPessoalSaude.cs" />
+    <Compile Include="Entidades\Erro.cs" />
+    <Compile Include="Entidades\Filhos.cs" />
+    <Compile Include="Entidades\Final.cs" />
+    <Compile Include="Entidades\FormaPagamento.cs" />
+    <Compile Include="Entidades\PerguntaRespostaDPS.cs" />
+    <Compile Include="Entidades\PerguntasResposta.cs" />
+    <Compile Include="Entidades\Proposta.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entidades\RendaMensal.cs" />
+    <Compile Include="Entidades\RendaMensalConjuge.cs" />
+    <Compile Include="Entidades\TipoTelefone.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

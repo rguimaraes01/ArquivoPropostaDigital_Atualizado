@@ -1,0 +1,1165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DigitacaoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_BENEFICIARIO">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqben" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="nr_seqben" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_nmecli" Type="varchar" MaxLength="60" />
+          <Property Name="pr_ptcben" Type="decimal" Precision="7" Scale="4" />
+          <Property Name="dt_inivigben" Type="datetime" />
+          <Property Name="dt_fimvigben" Type="datetime" />
+          <Property Name="tp_pte" Type="int" />
+          <Property Name="nr_cgccpfcli" Type="numeric" Precision="15" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="nr_seqcli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_agp" Type="int" />
+          <Property Name="ds_agp" Type="varchar" MaxLength="60" />
+          <Property Name="nr_pla" Type="int" />
+          <Property Name="ds_pla" Type="char" MaxLength="60" />
+          <Property Name="vl_is" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_isap" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="nm_nmecli" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="nr_cgccpfcli" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="dt_nsccli" Type="datetime" />
+          <Property Name="tp_sexocli" Type="int" />
+          <Property Name="ds_sexocli" Type="char" MaxLength="10" />
+          <Property Name="st_estcivcli" Type="tinyint" />
+          <Property Name="ds_estcivcli" Type="char" MaxLength="20" />
+          <Property Name="fl_cpfpoocli" Type="char" MaxLength="1" />
+          <Property Name="cd_mat" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="vl_rdacli" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="nr_idtcli" Type="varchar" MaxLength="20" />
+          <Property Name="dc_orgexdidtcli" Type="varchar" MaxLength="100" />
+          <Property Name="dt_exd_idtcli" Type="datetime" />
+          <Property Name="tp_cli" Type="int" Nullable="false" />
+          <Property Name="tp_pte" Type="int" />
+          <Property Name="cd_atd" Type="int" />
+          <Property Name="cd_pes" Type="int" />
+          <Property Name="id_exl" Type="tinyint" />
+          <Property Name="cd_pesdig" Type="int" />
+          <Property Name="vl_pmo" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="tp_tit" Type="int" />
+          <Property Name="nm_nmeclippt" Type="varchar" MaxLength="40" />
+          <Property Name="vl_isalodtr" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_isdoecgn" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_isgrvinf" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_isdiainf" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_pmoalodtr" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_pmodoecgn" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_pmoprtcri" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_isassemg" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vl_pmoassemg" Type="numeric" Precision="11" Scale="2" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE_EMAIL">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_seqemail" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="nr_seqcli" Type="int" Nullable="false" />
+          <Property Name="nr_seqemail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_email" Type="varchar" MaxLength="100" />
+          <Property Name="tp_tipemal" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE_ENDERECO">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_seqcliend" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="nr_seqcli" Type="int" Nullable="false" />
+          <Property Name="nr_seqcliend" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dc_nmeend" Type="varchar" MaxLength="100" />
+          <Property Name="nr_end" Type="int" />
+          <Property Name="dc_cplend" Type="varchar" MaxLength="20" />
+          <Property Name="dc_refend" Type="varchar" MaxLength="60" />
+          <Property Name="dc_nmebai" Type="varchar" MaxLength="100" />
+          <Property Name="cd_ceppes" Type="int" />
+          <Property Name="dc_nmecid" Type="varchar" MaxLength="100" />
+          <Property Name="sg_uf" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE_TELEFONE">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_seqclitel" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="nr_seqcli" Type="int" Nullable="false" />
+          <Property Name="nr_seqclitel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nr_ddd" Type="int" />
+          <Property Name="nr_tel" Type="int" />
+          <Property Name="nr_ram" Type="int" />
+          <Property Name="tp_tiptel" Type="int" />
+          <Property Name="ds_tiptel" Type="varchar" MaxLength="20" />
+          <Property Name="nm_cnt" Type="varchar" MaxLength="100" />
+          <Property Name="id_celpri" Type="char" MaxLength="1" />
+          <Property Name="id_sms" Type="char" MaxLength="1" />
+          <Property Name="fl_celwha" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TB_DADOS_BANCARIOS">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="nr_bco" Type="char" MaxLength="5" />
+          <Property Name="nr_agc" Type="char" MaxLength="5" />
+          <Property Name="nr_dva" Type="char" MaxLength="2" />
+          <Property Name="nr_cta" Type="char" MaxLength="10" />
+          <Property Name="nr_dvc" Type="char" MaxLength="2" />
+          <Property Name="nr_tipcta" Type="char" MaxLength="1" />
+          <Property Name="nr_catcta" Type="char" MaxLength="1" />
+          <Property Name="nm_ttlcta" Type="varchar" MaxLength="40" />
+          <Property Name="nr_cpfttlcta" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="TB_DADOS_CARTAO">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="pri_msl" Type="bit" Nullable="false" />
+          <Property Name="dms_msl" Type="bit" Nullable="false" />
+          <Property Name="tp_cba" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="cd_bnd" Type="int" />
+          <Property Name="nm_cli" Type="varchar" MaxLength="100" />
+          <Property Name="nr_cto" Type="nvarchar" MaxLength="4000" />
+          <Property Name="nr_ultnumcto" Type="varchar" MaxLength="4" />
+          <Property Name="nr_cvv" Type="varchar" MaxLength="4000" />
+          <Property Name="nr_mesvct" Type="int" />
+          <Property Name="nr_anovct" Type="int" />
+          <Property Name="dt_vctpcl" Type="smalldatetime" />
+          <Property Name="vr_pmo" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="st_reg" Type="char" MaxLength="1" />
+          <Property Name="dt_icl" Type="smalldatetime" />
+          <Property Name="id_chvpub" Type="int" />
+          <Property Name="dt_pss" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_digitacao.dbo.TB_DOMINIO_CAMPO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TB_DOMINIO_CAMPO">
+          <Key>
+            <PropertyRef Name="nm_cam" />
+            <PropertyRef Name="ds_vlrdmn" />
+          </Key>
+          <Property Name="nm_cam" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ds_vlrdmn" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_sgncam" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_PROPOSTA">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="dt_inivig" Type="datetime" />
+          <Property Name="dt_vndppt" Type="datetime" />
+          <Property Name="dt_iclppt" Type="datetime" />
+          <Property Name="id_ppncjgpcp" Type="char" MaxLength="1" />
+          <Property Name="dt_ven" Type="datetime" />
+          <Property Name="ds_pervig" Type="varchar" MaxLength="50" />
+          <Property Name="cd_clb" Type="int" />
+          <Property Name="cd_clbsup" Type="int" />
+          <Property Name="ds_perpag" Type="varchar" MaxLength="50" />
+          <Property Name="vl_przrec" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="qt_przrec" Type="int" />
+          <Property Name="vr_pmotot" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="dt_digppt" Type="datetime" />
+          <Property Name="cd_usu" Type="varchar" MaxLength="20" />
+          <Property Name="id_sitppt" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="dt_excppt" Type="datetime" />
+          <Property Name="dt_sitppt" Type="datetime" Nullable="false" />
+          <Property Name="dt_ultpss" Type="datetime" />
+          <Property Name="vr_pmopcp" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vr_pmototdpd" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vr_cobadc" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="id_cboadcbnfmsa" Type="char" MaxLength="1" />
+          <Property Name="id_meicba" Type="smallint" Nullable="false" />
+          <Property Name="cd_orivnd" Type="varchar" MaxLength="3" />
+          <Property Name="cd_cra" Type="int" />
+          <Property Name="id_autdpdagr" Type="char" MaxLength="1" />
+          <Property Name="cd_emp" Type="int" />
+          <Property Name="id_bencjgflh" Type="char" MaxLength="1" />
+          <Property Name="fl_canpag" Type="bit" />
+          <Property Name="ds_infadc" Type="varchar" MaxLength="250" />
+          <Property Name="tp_motdve" Type="char" MaxLength="2" />
+          <Property Name="vr_pmototflh" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vr_pmodoecon" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vr_pmocobinf" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vr_pmoalodtr" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="cd_envkit" Type="int" />
+          <Property Name="vl_przreccjg" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="vr_cobadccjg" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="qt_przreccjg" Type="int" />
+          <Property Name="fl_dadcli" Type="bit" />
+          <Property Name="tp_vldcli" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_RESP_PERG_PROPOSTA">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_ord" />
+          </Key>
+          <Property Name="cd_ctt" Type="int" Nullable="false" />
+          <Property Name="cd_prd" Type="int" Nullable="false" />
+          <Property Name="nr_ppt" Type="int" Nullable="false" />
+          <Property Name="nr_seqcli" Type="int" Nullable="false" />
+          <Property Name="nr_ord" Type="int" Nullable="false" />
+          <Property Name="ds_obs" Type="varchar" MaxLength="140" />
+          <Property Name="cd_pgt" Type="int" Nullable="false" />
+          <Property Name="ds_pgt" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cd_rsp" Type="int" Nullable="false" />
+          <Property Name="ds_rsp" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tp_dps" Type="smallint" />
+        </EntityType>
+        <Association Name="FK__TB_BENEFICIARIO__5C02A283">
+          <End Role="TB_PROPOSTA" Type="Self.TB_PROPOSTA" Multiplicity="1" />
+          <End Role="TB_BENEFICIARIO" Type="Self.TB_BENEFICIARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_BENEFICIARIO">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENTE__5B0E7E4A">
+          <End Role="TB_PROPOSTA" Type="Self.TB_PROPOSTA" Multiplicity="1" />
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENTE_EMAIL__5832119F">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_CLIENTE_EMAIL" Type="Self.TB_CLIENTE_EMAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE_EMAIL">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENTE_ENDER__573DED66">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_CLIENTE_ENDERECO" Type="Self.TB_CLIENTE_ENDERECO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE_ENDERECO">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENTE_TELEF__592635D8">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_CLIENTE_TELEFONE" Type="Self.TB_CLIENTE_TELEFONE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE_TELEFONE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_DADOS_CARTAO__5C02A283">
+          <End Role="TB_PROPOSTA" Type="Self.TB_PROPOSTA" Multiplicity="1" />
+          <End Role="TB_DADOS_CARTAO" Type="Self.TB_DADOS_CARTAO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_DADOS_CARTAO">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESP_PERG_PRO__5A1A5A11">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_RESP_PERG_PROPOSTA" Type="Self.TB_RESP_PERG_PROPOSTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_RESP_PERG_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DADOS_BANCARIOS">
+          <End Role="TB_PROPOSTA" Type="Self.TB_PROPOSTA" Multiplicity="1" />
+          <End Role="TB_DADOS_BANCARIOS" Type="Self.TB_DADOS_BANCARIOS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_DADOS_BANCARIOS">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DigitacaoModelStoreContainer">
+          <EntitySet Name="TB_BENEFICIARIO" EntityType="Self.TB_BENEFICIARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CLIENTE" EntityType="Self.TB_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CLIENTE_EMAIL" EntityType="Self.TB_CLIENTE_EMAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CLIENTE_ENDERECO" EntityType="Self.TB_CLIENTE_ENDERECO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CLIENTE_TELEFONE" EntityType="Self.TB_CLIENTE_TELEFONE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_DADOS_BANCARIOS" EntityType="Self.TB_DADOS_BANCARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_DADOS_CARTAO" EntityType="Self.TB_DADOS_CARTAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PROPOSTA" EntityType="Self.TB_PROPOSTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_RESP_PERG_PROPOSTA" EntityType="Self.TB_RESP_PERG_PROPOSTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_DOMINIO_CAMPO" EntityType="Self.TB_DOMINIO_CAMPO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TB_DOMINIO_CAMPO].[nm_cam] AS [nm_cam], 
+    [TB_DOMINIO_CAMPO].[ds_vlrdmn] AS [ds_vlrdmn], 
+    [TB_DOMINIO_CAMPO].[ds_sgncam] AS [ds_sgncam]
+    FROM [dbo].[TB_DOMINIO_CAMPO] AS [TB_DOMINIO_CAMPO]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__TB_BENEFICIARIO__5C02A283" Association="Self.FK__TB_BENEFICIARIO__5C02A283">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_BENEFICIARIO" EntitySet="TB_BENEFICIARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENTE__5B0E7E4A" Association="Self.FK__TB_CLIENTE__5B0E7E4A">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENTE_EMAIL__5832119F" Association="Self.FK__TB_CLIENTE_EMAIL__5832119F">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_CLIENTE_EMAIL" EntitySet="TB_CLIENTE_EMAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENTE_ENDER__573DED66" Association="Self.FK__TB_CLIENTE_ENDER__573DED66">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_CLIENTE_ENDERECO" EntitySet="TB_CLIENTE_ENDERECO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENTE_TELEF__592635D8" Association="Self.FK__TB_CLIENTE_TELEF__592635D8">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_CLIENTE_TELEFONE" EntitySet="TB_CLIENTE_TELEFONE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_DADOS_CARTAO__5C02A283" Association="Self.FK__TB_DADOS_CARTAO__5C02A283">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_DADOS_CARTAO" EntitySet="TB_DADOS_CARTAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESP_PERG_PRO__5A1A5A11" Association="Self.FK__TB_RESP_PERG_PRO__5A1A5A11">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_RESP_PERG_PROPOSTA" EntitySet="TB_RESP_PERG_PROPOSTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DADOS_BANCARIOS" Association="Self.FK_TB_DADOS_BANCARIOS">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_DADOS_BANCARIOS" EntitySet="TB_DADOS_BANCARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DigitacaoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqcli" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_agp" Type="Int32" />
+          <Property Name="ds_agp" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="nr_pla" Type="Int32" />
+          <Property Name="ds_pla" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="vl_is" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_isap" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="nm_nmecli" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nr_cgccpfcli" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="dt_nsccli" Type="DateTime" Precision="3" />
+          <Property Name="tp_sexocli" Type="Int32" />
+          <Property Name="ds_sexocli" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="st_estcivcli" Type="Byte" />
+          <Property Name="ds_estcivcli" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="fl_cpfpoocli" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cd_mat" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="vl_rdacli" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="nr_idtcli" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dc_orgexdidtcli" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dt_exd_idtcli" Type="DateTime" Precision="3" />
+          <Property Name="tp_cli" Type="Int32" Nullable="false" />
+          <Property Name="tp_pte" Type="Int32" />
+          <Property Name="cd_atd" Type="Int32" />
+          <Property Name="cd_pes" Type="Int32" />
+          <Property Name="id_exl" Type="Byte" />
+          <Property Name="cd_pesdig" Type="Int32" />
+          <Property Name="vl_pmo" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="tp_tit" Type="Int32" />
+          <Property Name="nm_nmeclippt" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="vl_isalodtr" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_isdoecgn" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_isgrvinf" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_isdiainf" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_pmoalodtr" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_pmodoecgn" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_pmoprtcri" Type="Decimal" Precision="11" Scale="2" />
+          <NavigationProperty Name="TB_PROPOSTA" Relationship="Self.FK__TB_CLIENTE__5B0E7E4A" FromRole="TB_CLIENTE" ToRole="TB_PROPOSTA" />
+          <NavigationProperty Name="TB_CLIENTE_EMAIL" Relationship="Self.FK__TB_CLIENTE_EMAIL__5832119F" FromRole="TB_CLIENTE" ToRole="TB_CLIENTE_EMAIL" />
+          <NavigationProperty Name="TB_CLIENTE_ENDERECO" Relationship="Self.FK__TB_CLIENTE_ENDER__573DED66" FromRole="TB_CLIENTE" ToRole="TB_CLIENTE_ENDERECO" />
+          <NavigationProperty Name="TB_CLIENTE_TELEFONE" Relationship="Self.FK__TB_CLIENTE_TELEF__592635D8" FromRole="TB_CLIENTE" ToRole="TB_CLIENTE_TELEFONE" />
+          <NavigationProperty Name="TB_RESP_PERG_PROPOSTA" Relationship="DigitacaoModel.FK__TB_RESP_PERG_PRO__5A1A5A11" FromRole="TB_CLIENTE" ToRole="TB_RESP_PERG_PROPOSTA" />
+          <Property Name="vl_isassemg" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vl_pmoassemg" Type="Decimal" Precision="11" Scale="2" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE_EMAIL">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_seqemail" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqcli" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqemail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tp_tipemal" Type="Int32" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK__TB_CLIENTE_EMAIL__5832119F" FromRole="TB_CLIENTE_EMAIL" ToRole="TB_CLIENTE" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE_ENDERECO">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_seqcliend" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqcli" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqcliend" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dc_nmeend" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nr_end" Type="Int32" />
+          <Property Name="dc_cplend" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dc_refend" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="dc_nmebai" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cd_ceppes" Type="Int32" />
+          <Property Name="dc_nmecid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sg_uf" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK__TB_CLIENTE_ENDER__573DED66" FromRole="TB_CLIENTE_ENDERECO" ToRole="TB_CLIENTE" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE_TELEFONE">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_seqclitel" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqcli" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqclitel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nr_ddd" Type="Int32" />
+          <Property Name="nr_tel" Type="Int32" />
+          <Property Name="nr_ram" Type="Int32" />
+          <Property Name="tp_tiptel" Type="Int32" />
+          <Property Name="ds_tiptel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nm_cnt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_celpri" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="id_sms" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fl_celwha" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK__TB_CLIENTE_TELEF__592635D8" FromRole="TB_CLIENTE_TELEFONE" ToRole="TB_CLIENTE" />
+        </EntityType>
+        <EntityType Name="TB_PROPOSTA">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="dt_inivig" Type="DateTime" Precision="3" />
+          <Property Name="dt_vndppt" Type="DateTime" Precision="3" />
+          <Property Name="dt_iclppt" Type="DateTime" Precision="3" />
+          <Property Name="id_ppncjgpcp" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dt_ven" Type="DateTime" Precision="3" />
+          <Property Name="ds_pervig" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cd_clb" Type="Int32" />
+          <Property Name="cd_clbsup" Type="Int32" />
+          <Property Name="ds_perpag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vl_przrec" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="qt_przrec" Type="Int32" />
+          <Property Name="vr_pmotot" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="dt_digppt" Type="DateTime" Precision="3" />
+          <Property Name="cd_usu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id_sitppt" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dt_excppt" Type="DateTime" Precision="3" />
+          <Property Name="dt_sitppt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dt_ultpss" Type="DateTime" Precision="3" />
+          <Property Name="vr_pmopcp" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vr_pmototdpd" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vr_cobadc" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="id_cboadcbnfmsa" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="id_meicba" Type="Int16" Nullable="false" />
+          <Property Name="cd_orivnd" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="cd_cra" Type="Int32" />
+          <Property Name="id_autdpdagr" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cd_emp" Type="Int32" />
+          <Property Name="id_bencjgflh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fl_canpag" Type="Boolean" />
+          <Property Name="ds_infadc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="tp_motdve" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="vr_pmototflh" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vr_pmodoecon" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vr_pmocobinf" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vr_pmoalodtr" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="cd_envkit" Type="Int32" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK__TB_CLIENTE__5B0E7E4A" FromRole="TB_PROPOSTA" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_DADOS_BANCARIOS" Relationship="DigitacaoModel.FK_TB_DADOS_BANCARIOS" FromRole="TB_PROPOSTA" ToRole="TB_DADOS_BANCARIOS" />
+          <NavigationProperty Name="TB_DADOS_CARTAO" Relationship="DigitacaoModel.FK__TB_DADOS_CARTAO__5C02A283" FromRole="TB_PROPOSTA" ToRole="TB_DADOS_CARTAO" />
+          <Property Name="vl_przreccjg" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="vr_cobadccjg" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="qt_przreccjg" Type="Int32" />
+          <Property Name="fl_dadcli" Type="Boolean" />
+          <Property Name="tp_vldcli" Type="Int32" />
+          <NavigationProperty Name="TB_BENEFICIARIO" Relationship="DigitacaoModel.FK__TB_BENEFICIARIO__5C02A283" FromRole="TB_PROPOSTA" ToRole="TB_BENEFICIARIO" />
+        </EntityType>
+        <Association Name="FK__TB_CLIENTE__5B0E7E4A">
+          <End Role="TB_PROPOSTA" Type="Self.TB_PROPOSTA" Multiplicity="1" />
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENTE_EMAIL__5832119F">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_CLIENTE_EMAIL" Type="Self.TB_CLIENTE_EMAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE_EMAIL">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENTE_ENDER__573DED66">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_CLIENTE_ENDERECO" Type="Self.TB_CLIENTE_ENDERECO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE_ENDERECO">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENTE_TELEF__592635D8">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_CLIENTE_TELEFONE" Type="Self.TB_CLIENTE_TELEFONE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE_TELEFONE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DigitacaoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_CLIENTE" EntityType="Self.TB_CLIENTE" />
+          <EntitySet Name="TB_CLIENTE_EMAIL" EntityType="Self.TB_CLIENTE_EMAIL" />
+          <EntitySet Name="TB_CLIENTE_ENDERECO" EntityType="Self.TB_CLIENTE_ENDERECO" />
+          <EntitySet Name="TB_CLIENTE_TELEFONE" EntityType="Self.TB_CLIENTE_TELEFONE" />
+          <EntitySet Name="TB_PROPOSTA" EntityType="Self.TB_PROPOSTA" />
+          <AssociationSet Name="FK__TB_CLIENTE__5B0E7E4A" Association="Self.FK__TB_CLIENTE__5B0E7E4A">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENTE_EMAIL__5832119F" Association="Self.FK__TB_CLIENTE_EMAIL__5832119F">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_CLIENTE_EMAIL" EntitySet="TB_CLIENTE_EMAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENTE_ENDER__573DED66" Association="Self.FK__TB_CLIENTE_ENDER__573DED66">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_CLIENTE_ENDERECO" EntitySet="TB_CLIENTE_ENDERECO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENTE_TELEF__592635D8" Association="Self.FK__TB_CLIENTE_TELEF__592635D8">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_CLIENTE_TELEFONE" EntitySet="TB_CLIENTE_TELEFONE" />
+          </AssociationSet>
+          <EntitySet Name="TB_DADOS_BANCARIOS" EntityType="DigitacaoModel.TB_DADOS_BANCARIOS" />
+          <EntitySet Name="TB_DADOS_CARTAO" EntityType="DigitacaoModel.TB_DADOS_CARTAO" />
+          <EntitySet Name="TB_RESP_PERG_PROPOSTA" EntityType="DigitacaoModel.TB_RESP_PERG_PROPOSTA" />
+          <AssociationSet Name="FK__TB_RESP_PERG_PRO__5A1A5A11" Association="DigitacaoModel.FK__TB_RESP_PERG_PRO__5A1A5A11">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_RESP_PERG_PROPOSTA" EntitySet="TB_RESP_PERG_PROPOSTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DADOS_BANCARIOS" Association="DigitacaoModel.FK_TB_DADOS_BANCARIOS">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_DADOS_BANCARIOS" EntitySet="TB_DADOS_BANCARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_DADOS_CARTAO__5C02A283" Association="DigitacaoModel.FK__TB_DADOS_CARTAO__5C02A283">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_DADOS_CARTAO" EntitySet="TB_DADOS_CARTAO" />
+          </AssociationSet>
+          <EntitySet Name="TB_BENEFICIARIO" EntityType="DigitacaoModel.TB_BENEFICIARIO" />
+          <AssociationSet Name="FK__TB_BENEFICIARIO__5C02A283" Association="DigitacaoModel.FK__TB_BENEFICIARIO__5C02A283">
+            <End Role="TB_PROPOSTA" EntitySet="TB_PROPOSTA" />
+            <End Role="TB_BENEFICIARIO" EntitySet="TB_BENEFICIARIO" />
+          </AssociationSet>
+          <EntitySet Name="TB_DOMINIO_CAMPO" EntityType="DigitacaoModel.TB_DOMINIO_CAMPO" />
+        </EntityContainer>
+        <EntityType Name="TB_DADOS_BANCARIOS">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="nr_bco" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="nr_agc" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="nr_dva" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nr_cta" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="nr_dvc" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nr_tipcta" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="nr_catcta" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="nm_ttlcta" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nr_cpfttlcta" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TB_PROPOSTA" Relationship="DigitacaoModel.FK_TB_DADOS_BANCARIOS" FromRole="TB_DADOS_BANCARIOS" ToRole="TB_PROPOSTA" />
+        </EntityType>
+        <EntityType Name="TB_DADOS_CARTAO">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="pri_msl" Type="Boolean" Nullable="false" />
+          <Property Name="dms_msl" Type="Boolean" Nullable="false" />
+          <Property Name="tp_cba" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cd_bnd" Type="Int32" />
+          <Property Name="nm_cli" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nr_cto" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="nr_ultnumcto" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nr_cvv" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="nr_mesvct" Type="Int32" />
+          <Property Name="nr_anovct" Type="Int32" />
+          <Property Name="dt_vctpcl" Type="DateTime" Precision="0" />
+          <Property Name="vr_pmo" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="st_reg" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dt_icl" Type="DateTime" Precision="0" />
+          <Property Name="id_chvpub" Type="Int32" />
+          <Property Name="dt_pss" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TB_PROPOSTA" Relationship="DigitacaoModel.FK__TB_DADOS_CARTAO__5C02A283" FromRole="TB_DADOS_CARTAO" ToRole="TB_PROPOSTA" />
+        </EntityType>
+        <EntityType Name="TB_RESP_PERG_PROPOSTA">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqcli" />
+            <PropertyRef Name="nr_ord" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqcli" Type="Int32" Nullable="false" />
+          <Property Name="nr_ord" Type="Int32" Nullable="false" />
+          <Property Name="ds_obs" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="cd_pgt" Type="Int32" Nullable="false" />
+          <Property Name="ds_pgt" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cd_rsp" Type="Int32" Nullable="false" />
+          <Property Name="ds_rsp" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tp_dps" Type="Int16" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="DigitacaoModel.FK__TB_RESP_PERG_PRO__5A1A5A11" FromRole="TB_RESP_PERG_PROPOSTA" ToRole="TB_CLIENTE" />
+        </EntityType>
+        <Association Name="FK__TB_RESP_PERG_PRO__5A1A5A11">
+          <End Type="DigitacaoModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="1" />
+          <End Type="DigitacaoModel.TB_RESP_PERG_PROPOSTA" Role="TB_RESP_PERG_PROPOSTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Principal>
+            <Dependent Role="TB_RESP_PERG_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+              <PropertyRef Name="nr_seqcli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DADOS_BANCARIOS">
+          <End Type="DigitacaoModel.TB_PROPOSTA" Role="TB_PROPOSTA" Multiplicity="1" />
+          <End Type="DigitacaoModel.TB_DADOS_BANCARIOS" Role="TB_DADOS_BANCARIOS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_DADOS_BANCARIOS">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_DADOS_CARTAO__5C02A283">
+          <End Type="DigitacaoModel.TB_PROPOSTA" Role="TB_PROPOSTA" Multiplicity="1" />
+          <End Type="DigitacaoModel.TB_DADOS_CARTAO" Role="TB_DADOS_CARTAO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_DADOS_CARTAO">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB_BENEFICIARIO">
+          <Key>
+            <PropertyRef Name="cd_ctt" />
+            <PropertyRef Name="cd_prd" />
+            <PropertyRef Name="nr_ppt" />
+            <PropertyRef Name="nr_seqben" />
+          </Key>
+          <Property Name="cd_ctt" Type="Int32" Nullable="false" />
+          <Property Name="cd_prd" Type="Int32" Nullable="false" />
+          <Property Name="nr_ppt" Type="Int32" Nullable="false" />
+          <Property Name="nr_seqben" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_nmecli" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="pr_ptcben" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="dt_inivigben" Type="DateTime" Precision="3" />
+          <Property Name="dt_fimvigben" Type="DateTime" Precision="3" />
+          <Property Name="tp_pte" Type="Int32" />
+          <Property Name="nr_cgccpfcli" Type="Decimal" Precision="15" Scale="0" />
+          <NavigationProperty Name="TB_PROPOSTA" Relationship="DigitacaoModel.FK__TB_BENEFICIARIO__5C02A283" FromRole="TB_BENEFICIARIO" ToRole="TB_PROPOSTA" />
+        </EntityType>
+        <Association Name="FK__TB_BENEFICIARIO__5C02A283">
+          <End Type="DigitacaoModel.TB_PROPOSTA" Role="TB_PROPOSTA" Multiplicity="1" />
+          <End Type="DigitacaoModel.TB_BENEFICIARIO" Role="TB_BENEFICIARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROPOSTA">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Principal>
+            <Dependent Role="TB_BENEFICIARIO">
+              <PropertyRef Name="cd_ctt" />
+              <PropertyRef Name="cd_prd" />
+              <PropertyRef Name="nr_ppt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB_DOMINIO_CAMPO">
+          <Key>
+            <PropertyRef Name="nm_cam" />
+            <PropertyRef Name="ds_vlrdmn" />
+          </Key>
+          <Property Name="nm_cam" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ds_vlrdmn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_sgncam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DigitacaoModelStoreContainer" CdmEntityContainer="DigitacaoEntities">
+          <EntitySetMapping Name="TB_CLIENTE">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_CLIENTE">
+              <MappingFragment StoreEntitySet="TB_CLIENTE">
+                <ScalarProperty Name="vl_pmoassemg" ColumnName="vl_pmoassemg" />
+                <ScalarProperty Name="vl_isassemg" ColumnName="vl_isassemg" />
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="nr_seqcli" ColumnName="nr_seqcli" />
+                <ScalarProperty Name="cd_agp" ColumnName="cd_agp" />
+                <ScalarProperty Name="ds_agp" ColumnName="ds_agp" />
+                <ScalarProperty Name="nr_pla" ColumnName="nr_pla" />
+                <ScalarProperty Name="ds_pla" ColumnName="ds_pla" />
+                <ScalarProperty Name="vl_is" ColumnName="vl_is" />
+                <ScalarProperty Name="vl_isap" ColumnName="vl_isap" />
+                <ScalarProperty Name="nm_nmecli" ColumnName="nm_nmecli" />
+                <ScalarProperty Name="nr_cgccpfcli" ColumnName="nr_cgccpfcli" />
+                <ScalarProperty Name="dt_nsccli" ColumnName="dt_nsccli" />
+                <ScalarProperty Name="tp_sexocli" ColumnName="tp_sexocli" />
+                <ScalarProperty Name="ds_sexocli" ColumnName="ds_sexocli" />
+                <ScalarProperty Name="st_estcivcli" ColumnName="st_estcivcli" />
+                <ScalarProperty Name="ds_estcivcli" ColumnName="ds_estcivcli" />
+                <ScalarProperty Name="fl_cpfpoocli" ColumnName="fl_cpfpoocli" />
+                <ScalarProperty Name="cd_mat" ColumnName="cd_mat" />
+                <ScalarProperty Name="vl_rdacli" ColumnName="vl_rdacli" />
+                <ScalarProperty Name="nr_idtcli" ColumnName="nr_idtcli" />
+                <ScalarProperty Name="dc_orgexdidtcli" ColumnName="dc_orgexdidtcli" />
+                <ScalarProperty Name="dt_exd_idtcli" ColumnName="dt_exd_idtcli" />
+                <ScalarProperty Name="tp_cli" ColumnName="tp_cli" />
+                <ScalarProperty Name="tp_pte" ColumnName="tp_pte" />
+                <ScalarProperty Name="cd_atd" ColumnName="cd_atd" />
+                <ScalarProperty Name="cd_pes" ColumnName="cd_pes" />
+                <ScalarProperty Name="id_exl" ColumnName="id_exl" />
+                <ScalarProperty Name="cd_pesdig" ColumnName="cd_pesdig" />
+                <ScalarProperty Name="vl_pmo" ColumnName="vl_pmo" />
+                <ScalarProperty Name="tp_tit" ColumnName="tp_tit" />
+                <ScalarProperty Name="nm_nmeclippt" ColumnName="nm_nmeclippt" />
+                <ScalarProperty Name="vl_isalodtr" ColumnName="vl_isalodtr" />
+                <ScalarProperty Name="vl_isdoecgn" ColumnName="vl_isdoecgn" />
+                <ScalarProperty Name="vl_isgrvinf" ColumnName="vl_isgrvinf" />
+                <ScalarProperty Name="vl_isdiainf" ColumnName="vl_isdiainf" />
+                <ScalarProperty Name="vl_pmoalodtr" ColumnName="vl_pmoalodtr" />
+                <ScalarProperty Name="vl_pmodoecgn" ColumnName="vl_pmodoecgn" />
+                <ScalarProperty Name="vl_pmoprtcri" ColumnName="vl_pmoprtcri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CLIENTE_EMAIL">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_CLIENTE_EMAIL">
+              <MappingFragment StoreEntitySet="TB_CLIENTE_EMAIL">
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="nr_seqcli" ColumnName="nr_seqcli" />
+                <ScalarProperty Name="nr_seqemail" ColumnName="nr_seqemail" />
+                <ScalarProperty Name="nm_email" ColumnName="nm_email" />
+                <ScalarProperty Name="tp_tipemal" ColumnName="tp_tipemal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CLIENTE_ENDERECO">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_CLIENTE_ENDERECO">
+              <MappingFragment StoreEntitySet="TB_CLIENTE_ENDERECO">
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="nr_seqcli" ColumnName="nr_seqcli" />
+                <ScalarProperty Name="nr_seqcliend" ColumnName="nr_seqcliend" />
+                <ScalarProperty Name="dc_nmeend" ColumnName="dc_nmeend" />
+                <ScalarProperty Name="nr_end" ColumnName="nr_end" />
+                <ScalarProperty Name="dc_cplend" ColumnName="dc_cplend" />
+                <ScalarProperty Name="dc_refend" ColumnName="dc_refend" />
+                <ScalarProperty Name="dc_nmebai" ColumnName="dc_nmebai" />
+                <ScalarProperty Name="cd_ceppes" ColumnName="cd_ceppes" />
+                <ScalarProperty Name="dc_nmecid" ColumnName="dc_nmecid" />
+                <ScalarProperty Name="sg_uf" ColumnName="sg_uf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CLIENTE_TELEFONE">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_CLIENTE_TELEFONE">
+              <MappingFragment StoreEntitySet="TB_CLIENTE_TELEFONE">
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="nr_seqcli" ColumnName="nr_seqcli" />
+                <ScalarProperty Name="nr_seqclitel" ColumnName="nr_seqclitel" />
+                <ScalarProperty Name="nr_ddd" ColumnName="nr_ddd" />
+                <ScalarProperty Name="nr_tel" ColumnName="nr_tel" />
+                <ScalarProperty Name="nr_ram" ColumnName="nr_ram" />
+                <ScalarProperty Name="tp_tiptel" ColumnName="tp_tiptel" />
+                <ScalarProperty Name="ds_tiptel" ColumnName="ds_tiptel" />
+                <ScalarProperty Name="nm_cnt" ColumnName="nm_cnt" />
+                <ScalarProperty Name="id_celpri" ColumnName="id_celpri" />
+                <ScalarProperty Name="id_sms" ColumnName="id_sms" />
+                <ScalarProperty Name="fl_celwha" ColumnName="fl_celwha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PROPOSTA">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_PROPOSTA">
+              <MappingFragment StoreEntitySet="TB_PROPOSTA">
+                <ScalarProperty Name="tp_vldcli" ColumnName="tp_vldcli" />
+                <ScalarProperty Name="fl_dadcli" ColumnName="fl_dadcli" />
+                <ScalarProperty Name="qt_przreccjg" ColumnName="qt_przreccjg" />
+                <ScalarProperty Name="vr_cobadccjg" ColumnName="vr_cobadccjg" />
+                <ScalarProperty Name="vl_przreccjg" ColumnName="vl_przreccjg" />
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="dt_inivig" ColumnName="dt_inivig" />
+                <ScalarProperty Name="dt_vndppt" ColumnName="dt_vndppt" />
+                <ScalarProperty Name="dt_iclppt" ColumnName="dt_iclppt" />
+                <ScalarProperty Name="id_ppncjgpcp" ColumnName="id_ppncjgpcp" />
+                <ScalarProperty Name="dt_ven" ColumnName="dt_ven" />
+                <ScalarProperty Name="ds_pervig" ColumnName="ds_pervig" />
+                <ScalarProperty Name="cd_clb" ColumnName="cd_clb" />
+                <ScalarProperty Name="cd_clbsup" ColumnName="cd_clbsup" />
+                <ScalarProperty Name="ds_perpag" ColumnName="ds_perpag" />
+                <ScalarProperty Name="vl_przrec" ColumnName="vl_przrec" />
+                <ScalarProperty Name="qt_przrec" ColumnName="qt_przrec" />
+                <ScalarProperty Name="vr_pmotot" ColumnName="vr_pmotot" />
+                <ScalarProperty Name="dt_digppt" ColumnName="dt_digppt" />
+                <ScalarProperty Name="cd_usu" ColumnName="cd_usu" />
+                <ScalarProperty Name="id_sitppt" ColumnName="id_sitppt" />
+                <ScalarProperty Name="dt_excppt" ColumnName="dt_excppt" />
+                <ScalarProperty Name="dt_sitppt" ColumnName="dt_sitppt" />
+                <ScalarProperty Name="dt_ultpss" ColumnName="dt_ultpss" />
+                <ScalarProperty Name="vr_pmopcp" ColumnName="vr_pmopcp" />
+                <ScalarProperty Name="vr_pmototdpd" ColumnName="vr_pmototdpd" />
+                <ScalarProperty Name="vr_cobadc" ColumnName="vr_cobadc" />
+                <ScalarProperty Name="id_cboadcbnfmsa" ColumnName="id_cboadcbnfmsa" />
+                <ScalarProperty Name="id_meicba" ColumnName="id_meicba" />
+                <ScalarProperty Name="cd_orivnd" ColumnName="cd_orivnd" />
+                <ScalarProperty Name="cd_cra" ColumnName="cd_cra" />
+                <ScalarProperty Name="id_autdpdagr" ColumnName="id_autdpdagr" />
+                <ScalarProperty Name="cd_emp" ColumnName="cd_emp" />
+                <ScalarProperty Name="id_bencjgflh" ColumnName="id_bencjgflh" />
+                <ScalarProperty Name="fl_canpag" ColumnName="fl_canpag" />
+                <ScalarProperty Name="ds_infadc" ColumnName="ds_infadc" />
+                <ScalarProperty Name="tp_motdve" ColumnName="tp_motdve" />
+                <ScalarProperty Name="vr_pmototflh" ColumnName="vr_pmototflh" />
+                <ScalarProperty Name="vr_pmodoecon" ColumnName="vr_pmodoecon" />
+                <ScalarProperty Name="vr_pmocobinf" ColumnName="vr_pmocobinf" />
+                <ScalarProperty Name="vr_pmoalodtr" ColumnName="vr_pmoalodtr" />
+                <ScalarProperty Name="cd_envkit" ColumnName="cd_envkit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_DADOS_BANCARIOS">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_DADOS_BANCARIOS">
+              <MappingFragment StoreEntitySet="TB_DADOS_BANCARIOS">
+                <ScalarProperty Name="nr_cpfttlcta" ColumnName="nr_cpfttlcta" />
+                <ScalarProperty Name="nm_ttlcta" ColumnName="nm_ttlcta" />
+                <ScalarProperty Name="nr_catcta" ColumnName="nr_catcta" />
+                <ScalarProperty Name="nr_tipcta" ColumnName="nr_tipcta" />
+                <ScalarProperty Name="nr_dvc" ColumnName="nr_dvc" />
+                <ScalarProperty Name="nr_cta" ColumnName="nr_cta" />
+                <ScalarProperty Name="nr_dva" ColumnName="nr_dva" />
+                <ScalarProperty Name="nr_agc" ColumnName="nr_agc" />
+                <ScalarProperty Name="nr_bco" ColumnName="nr_bco" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_DADOS_CARTAO">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_DADOS_CARTAO">
+              <MappingFragment StoreEntitySet="TB_DADOS_CARTAO">
+                <ScalarProperty Name="dt_pss" ColumnName="dt_pss" />
+                <ScalarProperty Name="id_chvpub" ColumnName="id_chvpub" />
+                <ScalarProperty Name="dt_icl" ColumnName="dt_icl" />
+                <ScalarProperty Name="st_reg" ColumnName="st_reg" />
+                <ScalarProperty Name="vr_pmo" ColumnName="vr_pmo" />
+                <ScalarProperty Name="dt_vctpcl" ColumnName="dt_vctpcl" />
+                <ScalarProperty Name="nr_anovct" ColumnName="nr_anovct" />
+                <ScalarProperty Name="nr_mesvct" ColumnName="nr_mesvct" />
+                <ScalarProperty Name="nr_cvv" ColumnName="nr_cvv" />
+                <ScalarProperty Name="nr_ultnumcto" ColumnName="nr_ultnumcto" />
+                <ScalarProperty Name="nr_cto" ColumnName="nr_cto" />
+                <ScalarProperty Name="nm_cli" ColumnName="nm_cli" />
+                <ScalarProperty Name="cd_bnd" ColumnName="cd_bnd" />
+                <ScalarProperty Name="tp_cba" ColumnName="tp_cba" />
+                <ScalarProperty Name="dms_msl" ColumnName="dms_msl" />
+                <ScalarProperty Name="pri_msl" ColumnName="pri_msl" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_RESP_PERG_PROPOSTA">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_RESP_PERG_PROPOSTA">
+              <MappingFragment StoreEntitySet="TB_RESP_PERG_PROPOSTA">
+                <ScalarProperty Name="tp_dps" ColumnName="tp_dps" />
+                <ScalarProperty Name="ds_rsp" ColumnName="ds_rsp" />
+                <ScalarProperty Name="cd_rsp" ColumnName="cd_rsp" />
+                <ScalarProperty Name="ds_pgt" ColumnName="ds_pgt" />
+                <ScalarProperty Name="cd_pgt" ColumnName="cd_pgt" />
+                <ScalarProperty Name="ds_obs" ColumnName="ds_obs" />
+                <ScalarProperty Name="nr_ord" ColumnName="nr_ord" />
+                <ScalarProperty Name="nr_seqcli" ColumnName="nr_seqcli" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_BENEFICIARIO">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_BENEFICIARIO">
+              <MappingFragment StoreEntitySet="TB_BENEFICIARIO">
+                <ScalarProperty Name="nr_cgccpfcli" ColumnName="nr_cgccpfcli" />
+                <ScalarProperty Name="tp_pte" ColumnName="tp_pte" />
+                <ScalarProperty Name="dt_fimvigben" ColumnName="dt_fimvigben" />
+                <ScalarProperty Name="dt_inivigben" ColumnName="dt_inivigben" />
+                <ScalarProperty Name="pr_ptcben" ColumnName="pr_ptcben" />
+                <ScalarProperty Name="nm_nmecli" ColumnName="nm_nmecli" />
+                <ScalarProperty Name="nr_seqben" ColumnName="nr_seqben" />
+                <ScalarProperty Name="nr_ppt" ColumnName="nr_ppt" />
+                <ScalarProperty Name="cd_prd" ColumnName="cd_prd" />
+                <ScalarProperty Name="cd_ctt" ColumnName="cd_ctt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_DOMINIO_CAMPO">
+            <EntityTypeMapping TypeName="DigitacaoModel.TB_DOMINIO_CAMPO">
+              <MappingFragment StoreEntitySet="TB_DOMINIO_CAMPO">
+                <ScalarProperty Name="ds_sgncam" ColumnName="ds_sgncam" />
+                <ScalarProperty Name="ds_vlrdmn" ColumnName="ds_vlrdmn" />
+                <ScalarProperty Name="nm_cam" ColumnName="nm_cam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

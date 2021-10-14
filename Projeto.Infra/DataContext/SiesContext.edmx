@@ -1,0 +1,1663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ArquivoPropostaDigital">
+          <Key>
+            <PropertyRef Name="idArquivoPropostaDigital" />
+          </Key>
+          <Property Name="idArquivoPropostaDigital" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="nomeArquivo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="quantidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArquivoPropostaDigitalDetalhe">
+          <Key>
+            <PropertyRef Name="idArquivoPropostaDigitalDetalhe" />
+          </Key>
+          <Property Name="idArquivoPropostaDigitalDetalhe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idArquivoPropostaDigital" Type="int" Nullable="false" />
+          <Property Name="numeroProposta" Type="int" Nullable="false" />
+          <Property Name="externalKey" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="statusProposta" Type="int" Nullable="false" />
+          <Property Name="json" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AtivPessoa">
+          <Key>
+            <PropertyRef Name="cdativpes" />
+            <PropertyRef Name="tppes" />
+          </Key>
+          <Property Name="cdativpes" Type="smallint" Nullable="false" />
+          <Property Name="tppes" Type="smallint" Nullable="false" />
+          <Property Name="nmativpes" Type="char" MaxLength="200" Nullable="false" />
+          <Property Name="codigoCNAE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="cdpescol" />
+          </Key>
+          <Property Name="cdpescol" Type="int" Nullable="false" />
+          <Property Name="cdempcol" Type="int" Nullable="false" />
+          <Property Name="nrcha" Type="int" Nullable="false" />
+          <Property Name="inrecprm" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tpfun" Type="smallint" Nullable="false" />
+          <Property Name="cdloc" Type="smallint" Nullable="false" />
+          <Property Name="stcol" Type="smallint" Nullable="false" />
+          <Property Name="cdhier" Type="int" />
+          <Property Name="tphier" Type="smallint" />
+          <Property Name="cdpescor" Type="int" />
+          <Property Name="cduni" Type="smallint" />
+        </EntityType>
+        <EntityType Name="ControleDataBatch">
+          <Key>
+            <PropertyRef Name="cdprosis" />
+          </Key>
+          <Property Name="cdprosis" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="dtultdiaria" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Sies.dbo.ControleDataSistema' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ControleDataSistema">
+          <Key>
+            <PropertyRef Name="dtultdiaria" />
+            <PropertyRef Name="dtdiariaatual" />
+            <PropertyRef Name="dtultmensal" />
+            <PropertyRef Name="dtproxmensal" />
+            <PropertyRef Name="dtcompetcontab" />
+          </Key>
+          <Property Name="dtultdiaria" Type="datetime" Nullable="false" />
+          <Property Name="dtdiariaatual" Type="datetime" Nullable="false" />
+          <Property Name="dtultmensal" Type="datetime" Nullable="false" />
+          <Property Name="dtproxmensal" Type="datetime" Nullable="false" />
+          <Property Name="dtcompetcontab" Type="datetime" Nullable="false" />
+          <Property Name="dtmesrefultcontab" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="ControleProposta">
+          <Key>
+            <PropertyRef Name="nrppscor" />
+          </Key>
+          <Property Name="nrppscor" Type="int" Nullable="false" />
+          <Property Name="cdconseg" Type="int" />
+          <Property Name="dtprop" Type="datetime" />
+          <Property Name="nmescritorio" Type="char" MaxLength="20" />
+          <Property Name="nmusuari" Type="char" MaxLength="20" />
+          <Property Name="nrnossonumero" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="stprop" Type="int" />
+          <Property Name="dtvenda" Type="datetime" />
+          <Property Name="stmotivo" Type="char" MaxLength="40" />
+          <Property Name="dtstatus" Type="datetime" />
+          <Property Name="vlpretot" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="dtven" Type="datetime" />
+          <Property Name="cdpescol" Type="int" />
+          <Property Name="incopinter" Type="smallint" />
+          <Property Name="dtcopinter" Type="datetime" />
+          <Property Name="incopdig" Type="smallint" />
+          <Property Name="dtcopdig" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CorretorVigencia">
+          <Key>
+            <PropertyRef Name="cdpescor" />
+            <PropertyRef Name="dataInicioVigencia" />
+          </Key>
+          <Property Name="cdpescor" Type="int" Nullable="false" />
+          <Property Name="dataInicioVigencia" Type="datetime" Nullable="false" />
+          <Property Name="cdregsus" Type="int" Nullable="false" />
+          <Property Name="cdloc" Type="smallint" Nullable="false" />
+          <Property Name="dtregsus" Type="datetime" Nullable="false" />
+          <Property Name="sgufregsus" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="incomant" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tpmeipgt" Type="smallint" Nullable="false" />
+          <Property Name="stcor" Type="smallint" Nullable="false" />
+          <Property Name="tpperpgt" Type="smallint" Nullable="false" />
+          <Property Name="cdorgprt" Type="int" Nullable="false" />
+          <Property Name="tporgprt" Type="smallint" Nullable="false" />
+          <Property Name="cdpesins" Type="int" />
+          <Property Name="inplataf" Type="char" MaxLength="1" />
+          <Property Name="cdpescorpla" Type="int" />
+          <Property Name="cdpesterpla" Type="int" />
+          <Property Name="dtvalregsus" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Emissao">
+          <Key>
+            <PropertyRef Name="cdconseg" />
+            <PropertyRef Name="cdemi" />
+          </Key>
+          <Property Name="cdconseg" Type="int" Nullable="false" />
+          <Property Name="cdemi" Type="int" Nullable="false" />
+          <Property Name="nrpps" Type="int" Nullable="false" />
+          <Property Name="nrppscor" Type="int" Nullable="false" />
+          <Property Name="cdrmoseg" Type="smallint" Nullable="false" />
+          <Property Name="cdsmo" Type="smallint" Nullable="false" />
+          <Property Name="nrapo" Type="int" Nullable="false" />
+          <Property Name="nreds" Type="int" Nullable="false" />
+          <Property Name="tpemi" Type="smallint" Nullable="false" />
+          <Property Name="tpestemi" Type="smallint" Nullable="false" />
+          <Property Name="tpope" Type="smallint" Nullable="false" />
+          <Property Name="tpeds" Type="smallint" Nullable="false" />
+          <Property Name="dtcotpps" Type="datetime" Nullable="false" />
+          <Property Name="dtefepps" Type="datetime" Nullable="false" />
+          <Property Name="dtemi" Type="datetime" Nullable="false" />
+          <Property Name="dtinivig" Type="datetime" Nullable="false" />
+          <Property Name="dtfimvig" Type="datetime" Nullable="false" />
+          <Property Name="pcnospte" Type="decimal" Precision="9" Scale="6" Nullable="false" />
+          <Property Name="pcmdicom" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="nratasor" Type="int" Nullable="false" />
+          <Property Name="nrcmnsegvul" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="nrordcosact" Type="int" Nullable="false" />
+          <Property Name="tpnivcom" Type="smallint" Nullable="false" />
+          <Property Name="tprcrrtt" Type="smallint" Nullable="false" />
+          <Property Name="incalparpre" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="incalparcom" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="incalparces" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="inrcliof" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="incbajur" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="incbacstapo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="txpdapre" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="cdrefmonpre" Type="smallint" Nullable="false" />
+          <Property Name="cdrefmonis" Type="smallint" Nullable="false" />
+          <Property Name="dtcvspre" Type="datetime" Nullable="false" />
+          <Property Name="dtcvsis" Type="datetime" Nullable="false" />
+          <Property Name="vlistotinf" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="dtatasor" Type="datetime" Nullable="false" />
+          <Property Name="vlpretotemi" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="tpprt" Type="smallint" Nullable="false" />
+          <Property Name="stitf" Type="smallint" Nullable="false" />
+          <Property Name="cdorgprtsuc" Type="int" />
+          <Property Name="tporgprtsuc" Type="smallint" />
+          <Property Name="cdorgprtemp" Type="int" />
+          <Property Name="tporgprtemp" Type="smallint" />
+          <Property Name="dtbasecalc" Type="datetime" />
+          <Property Name="dtresseguro" Type="datetime" />
+          <Property Name="incancemi" Type="char" MaxLength="1" />
+          <Property Name="tpmotrecusa" Type="smallint" />
+          <Property Name="vllimind" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="idrecusared" Type="char" MaxLength="1" />
+          <Property Name="cdmotrecusared" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="InterfaceSinafCobertura">
+          <Key>
+            <PropertyRef Name="cdcobert" />
+            <PropertyRef Name="cdid" />
+          </Key>
+          <Property Name="cdcobert" Type="smallint" Nullable="false" />
+          <Property Name="cdid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bcf" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdtipofuneral" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="cdpes" />
+          </Key>
+          <Property Name="cdpes" Type="int" Nullable="false" />
+          <Property Name="tppes" Type="smallint" Nullable="false" />
+          <Property Name="nrcgccpf" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="nmpes" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="cdadmcrocre" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="cdcrocre" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="dtvldcrocre" Type="datetime" Nullable="false" />
+          <Property Name="tppgt" Type="smallint" Nullable="false" />
+          <Property Name="cditfful" Type="int" Nullable="false" />
+          <Property Name="nremp" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="tpcli" Type="smallint" Nullable="false" />
+          <Property Name="nrinsiap" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="tpclaisp" Type="smallint" Nullable="false" />
+          <Property Name="iniseiss" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="pciss" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="nriscmun" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="iniseir" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dtcad" Type="datetime" Nullable="false" />
+          <Property Name="inmcremp" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="nmcot" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nmfanpes" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nrinsest" Type="decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="iniseiof" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dtnas" Type="datetime" Nullable="false" />
+          <Property Name="tpsex" Type="smallint" Nullable="false" />
+          <Property Name="stestciv" Type="smallint" Nullable="false" />
+          <Property Name="nrdepirf" Type="smallint" Nullable="false" />
+          <Property Name="inemintf" Type="char" MaxLength="1" />
+          <Property Name="inretinss" Type="char" MaxLength="1" />
+          <Property Name="incpf" Type="char" MaxLength="1" />
+          <Property Name="cdativpes" Type="smallint" />
+          <Property Name="vlrendapes" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="nrrg" Type="decimal" Precision="11" Scale="0" />
+          <Property Name="orgaoexprg" Type="char" MaxLength="40" />
+          <Property Name="dtexprg" Type="datetime" />
+          <Property Name="idpep" Type="char" MaxLength="1" />
+          <Property Name="fl_vlacpf" Type="bit" />
+        </EntityType>
+        <EntityType Name="PlanoAssistenciaSenior">
+          <Key>
+            <PropertyRef Name="codigoProduto" />
+            <PropertyRef Name="dataVigencia" />
+            <PropertyRef Name="codigoPlano" />
+          </Key>
+          <Property Name="codigoProduto" Type="smallint" Nullable="false" />
+          <Property Name="dataVigencia" Type="datetime" Nullable="false" />
+          <Property Name="codigoPlano" Type="smallint" Nullable="false" />
+          <Property Name="tipoPlano" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="cdprodut" />
+          </Key>
+          <Property Name="cdprodut" Type="smallint" Nullable="false" />
+          <Property Name="nmprodut" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nmaprodu" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="tpprodut" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdramosg" Type="smallint" Nullable="false" />
+          <Property Name="cdsubram" Type="smallint" Nullable="false" />
+          <Property Name="cdagrupr" Type="smallint" Nullable="false" />
+          <Property Name="dtatuali" Type="datetime" Nullable="false" />
+          <Property Name="tpitemsg" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="tppadimp" Type="char" MaxLength="1" />
+          <Property Name="idprodtpemi" Type="char" MaxLength="1" />
+          <Property Name="idprodtppro" Type="smallint" />
+        </EntityType>
+        <EntityType Name="TB_DETALHE_REGISTRO">
+          <Key>
+            <PropertyRef Name="cd_dtreg" />
+          </Key>
+          <Property Name="cd_dtreg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_regpss" Type="int" Nullable="false" />
+          <Property Name="cd_cam" Type="int" Nullable="false" />
+          <Property Name="vl_cam" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Sies.dbo.TB_DOMINIO_CAMPO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TB_DOMINIO_CAMPO">
+          <Key>
+            <PropertyRef Name="ds_vlrdmn" />
+            <PropertyRef Name="ds_sgncam" />
+            <PropertyRef Name="nm_cam" />
+          </Key>
+          <Property Name="nm_cam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_vlrdmn" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_sgncam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nm_tab" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_ERRO_REGISTRO">
+          <Key>
+            <PropertyRef Name="cd_erreg" />
+          </Key>
+          <Property Name="cd_erreg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_regpss" Type="int" Nullable="false" />
+          <Property Name="cd_err" Type="int" />
+          <Property Name="ds_msgerr" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="TB_LOG_PROCESSAMENTO">
+          <Key>
+            <PropertyRef Name="cd_logpss" />
+          </Key>
+          <Property Name="cd_logpss" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_pss" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="cd_usu" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="dt_inipss" Type="datetime" Nullable="false" />
+          <Property Name="dt_fimpss" Type="datetime" />
+          <Property Name="qt_minpss" Type="int" />
+          <Property Name="qt_totreg" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_REGISTRO_PROCESSAMENTO">
+          <Key>
+            <PropertyRef Name="cd_regpss" />
+          </Key>
+          <Property Name="cd_regpss" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_logpss" Type="int" Nullable="false" />
+          <Property Name="st_regpss" Type="char" MaxLength="1" />
+          <Property Name="dt_sitreg" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UnidadeCorretora">
+          <Key>
+            <PropertyRef Name="cdpescor" />
+            <PropertyRef Name="cduni" />
+          </Key>
+          <Property Name="cdpescor" Type="int" Nullable="false" />
+          <Property Name="cduni" Type="smallint" Nullable="false" />
+          <Property Name="dsuni" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VigCaractProduto">
+          <Key>
+            <PropertyRef Name="cdprodut" />
+            <PropertyRef Name="dtinivig" />
+          </Key>
+          <Property Name="cdprodut" Type="smallint" Nullable="false" />
+          <Property Name="dtinivig" Type="datetime" Nullable="false" />
+          <Property Name="dtfimvig" Type="datetime" Nullable="false" />
+          <Property Name="dtlimenq" Type="datetime" Nullable="false" />
+          <Property Name="qtmincof" Type="smallint" Nullable="false" />
+          <Property Name="cdiratis" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdindcen" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="vlprmiap" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="vlprmien" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="vlprmifa" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="vlparmin" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="qtdiascp" Type="smallint" Nullable="false" />
+          <Property Name="qtdiasem" Type="smallint" Nullable="false" />
+          <Property Name="qtdiaser" Type="smallint" Nullable="false" />
+          <Property Name="pcdevfpa" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="pcdevsca" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="pcdepiaa" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="tprenova" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tpcorisr" Type="smallint" Nullable="false" />
+          <Property Name="cdindara" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdiendvm" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tpelevis" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="qtdiasec" Type="smallint" Nullable="false" />
+          <Property Name="qtdiasvd" Type="smallint" Nullable="false" />
+          <Property Name="pcmindef" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="tpfpelis" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdiimcgp" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdiimcgr" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdestobj" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dtatuali" Type="datetime" Nullable="false" />
+          <Property Name="dtlimper" Type="datetime" Nullable="false" />
+          <Property Name="dtaprova" Type="datetime" Nullable="false" />
+          <Property Name="cdimptax" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdicusta" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cdrmencb" Type="smallint" Nullable="false" />
+          <Property Name="cdrmprmi" Type="smallint" Nullable="false" />
+          <Property Name="cdrmreno" Type="smallint" Nullable="false" />
+          <Property Name="cdobjpro" Type="smallint" />
+          <Property Name="pccomant" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="qtdialimatsp" Type="smallint" Nullable="false" />
+          <Property Name="pcdiaats" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="vlmgdifbaixa" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="tpajuven" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="vllimmaxrisd" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="cdlimmaxrisd" Type="smallint" />
+          <Property Name="cdrmsin" Type="smallint" Nullable="false" />
+          <Property Name="indsalv" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="indress" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="qtdiasper" Type="smallint" />
+          <Property Name="vlmulta" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="cdvermn" Type="char" MaxLength="100" />
+          <Property Name="cdprcsusep" Type="char" MaxLength="100" />
+          <Property Name="paramDependentes" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Sies.dbo.vPlanoInd' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vPlanoInd">
+          <Key>
+            <PropertyRef Name="cdprodut" />
+            <PropertyRef Name="dtinivig" />
+            <PropertyRef Name="nrseqplnind" />
+            <PropertyRef Name="dsplnind" />
+            <PropertyRef Name="tpplnand" />
+            <PropertyRef Name="vllimcjgbas" />
+            <PropertyRef Name="inresemg" />
+            <PropertyRef Name="vlresemg" />
+            <PropertyRef Name="pcfilisbas" />
+            <PropertyRef Name="pcfilprebas" />
+            <PropertyRef Name="tpsal" />
+            <PropertyRef Name="qthormes" />
+            <PropertyRef Name="qtsalbas" />
+            <PropertyRef Name="tpfreqpl" />
+            <PropertyRef Name="cdrefmon" />
+            <PropertyRef Name="cdcobert" />
+            <PropertyRef Name="pciscobbas" />
+            <PropertyRef Name="vllimis" />
+            <PropertyRef Name="pcprepur" />
+            <PropertyRef Name="tpcobert" />
+            <PropertyRef Name="nmprodut" />
+            <PropertyRef Name="nmcobert" />
+            <PropertyRef Name="nmaramos" />
+          </Key>
+          <Property Name="cdprodut" Type="smallint" Nullable="false" />
+          <Property Name="dtinivig" Type="datetime" Nullable="false" />
+          <Property Name="nrseqplnind" Type="smallint" Nullable="false" />
+          <Property Name="dsplnind" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="tpplnand" Type="smallint" Nullable="false" />
+          <Property Name="vllimcjgbas" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="inresemg" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="vlresemg" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="pcfilisbas" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="pcfilprebas" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="tpsal" Type="smallint" Nullable="false" />
+          <Property Name="qthormes" Type="smallint" Nullable="false" />
+          <Property Name="qtsalbas" Type="smallint" Nullable="false" />
+          <Property Name="tpfreqpl" Type="smallint" Nullable="false" />
+          <Property Name="cdrefmon" Type="smallint" Nullable="false" />
+          <Property Name="cdcobert" Type="smallint" Nullable="false" />
+          <Property Name="pciscobbas" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="vllimis" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="vllimismin" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="pcprepur" Type="decimal" Precision="17" Scale="12" Nullable="false" />
+          <Property Name="tpcobert" Type="smallint" Nullable="false" />
+          <Property Name="cdidaini" Type="int" />
+          <Property Name="cdidafim" Type="int" />
+          <Property Name="pcprepur1" Type="decimal" Precision="17" Scale="12" />
+          <Property Name="vllimis1" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="vllimismin1" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="nmprodut" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nmcobert" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nmaramos" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="indfaixa" Type="char" MaxLength="1" />
+          <Property Name="vlcsfixo" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="vlcsfixo1" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="inbeneficio" Type="char" MaxLength="1" />
+          <Property Name="vlbeneficio" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="nrmaxparc" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO">
+          <End Role="TB_REGISTRO_PROCESSAMENTO" Type="Self.TB_REGISTRO_PROCESSAMENTO" Multiplicity="1" />
+          <End Role="TB_DETALHE_REGISTRO" Type="Self.TB_DETALHE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_REGISTRO_PROCESSAMENTO">
+              <PropertyRef Name="cd_regpss" />
+            </Principal>
+            <Dependent Role="TB_DETALHE_REGISTRO">
+              <PropertyRef Name="cd_regpss" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO">
+          <End Role="TB_REGISTRO_PROCESSAMENTO" Type="Self.TB_REGISTRO_PROCESSAMENTO" Multiplicity="1" />
+          <End Role="TB_ERRO_REGISTRO" Type="Self.TB_ERRO_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_REGISTRO_PROCESSAMENTO">
+              <PropertyRef Name="cd_regpss" />
+            </Principal>
+            <Dependent Role="TB_ERRO_REGISTRO">
+              <PropertyRef Name="cd_regpss" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO">
+          <End Role="TB_LOG_PROCESSAMENTO" Type="Self.TB_LOG_PROCESSAMENTO" Multiplicity="1" />
+          <End Role="TB_REGISTRO_PROCESSAMENTO" Type="Self.TB_REGISTRO_PROCESSAMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_LOG_PROCESSAMENTO">
+              <PropertyRef Name="cd_logpss" />
+            </Principal>
+            <Dependent Role="TB_REGISTRO_PROCESSAMENTO">
+              <PropertyRef Name="cd_logpss" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArquivoPropostaDigitalDetalhexidPropostaDigital">
+          <End Role="ArquivoPropostaDigital" Type="Self.ArquivoPropostaDigital" Multiplicity="1" />
+          <End Role="ArquivoPropostaDigitalDetalhe" Type="Self.ArquivoPropostaDigitalDetalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArquivoPropostaDigital">
+              <PropertyRef Name="idArquivoPropostaDigital" />
+            </Principal>
+            <Dependent Role="ArquivoPropostaDigitalDetalhe">
+              <PropertyRef Name="idArquivoPropostaDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArquivoPropostaDigitalDetalhexNrPpsCor">
+          <End Role="ControleProposta" Type="Self.ControleProposta" Multiplicity="1" />
+          <End Role="ArquivoPropostaDigitalDetalhe" Type="Self.ArquivoPropostaDigitalDetalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ControleProposta">
+              <PropertyRef Name="nrppscor" />
+            </Principal>
+            <Dependent Role="ArquivoPropostaDigitalDetalhe">
+              <PropertyRef Name="numeroProposta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCOLCPRP">
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
+          <End Role="ControleProposta" Type="Self.ControleProposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaborador">
+              <PropertyRef Name="cdpescol" />
+            </Principal>
+            <Dependent Role="ControleProposta">
+              <PropertyRef Name="cdpescol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPESCORRVIG">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="1" />
+          <End Role="CorretorVigencia" Type="Self.CorretorVigencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="cdpes" />
+            </Principal>
+            <Dependent Role="CorretorVigencia">
+              <PropertyRef Name="cdpescor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SiesModelStoreContainer">
+          <EntitySet Name="ArquivoPropostaDigital" EntityType="Self.ArquivoPropostaDigital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArquivoPropostaDigitalDetalhe" EntityType="Self.ArquivoPropostaDigitalDetalhe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AtivPessoa" EntityType="Self.AtivPessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ControleDataBatch" EntityType="Self.ControleDataBatch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ControleProposta" EntityType="Self.ControleProposta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorretorVigencia" EntityType="Self.CorretorVigencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emissao" EntityType="Self.Emissao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InterfaceSinafCobertura" EntityType="Self.InterfaceSinafCobertura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanoAssistenciaSenior" EntityType="Self.PlanoAssistenciaSenior" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_DETALHE_REGISTRO" EntityType="Self.TB_DETALHE_REGISTRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ERRO_REGISTRO" EntityType="Self.TB_ERRO_REGISTRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_LOG_PROCESSAMENTO" EntityType="Self.TB_LOG_PROCESSAMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_REGISTRO_PROCESSAMENTO" EntityType="Self.TB_REGISTRO_PROCESSAMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadeCorretora" EntityType="Self.UnidadeCorretora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VigCaractProduto" EntityType="Self.VigCaractProduto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ControleDataSistema" EntityType="Self.ControleDataSistema" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ControleDataSistema].[dtultdiaria] AS [dtultdiaria], 
+    [ControleDataSistema].[dtdiariaatual] AS [dtdiariaatual], 
+    [ControleDataSistema].[dtultmensal] AS [dtultmensal], 
+    [ControleDataSistema].[dtproxmensal] AS [dtproxmensal], 
+    [ControleDataSistema].[dtcompetcontab] AS [dtcompetcontab], 
+    [ControleDataSistema].[dtmesrefultcontab] AS [dtmesrefultcontab]
+    FROM [dbo].[ControleDataSistema] AS [ControleDataSistema]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TB_DOMINIO_CAMPO" EntityType="Self.TB_DOMINIO_CAMPO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TB_DOMINIO_CAMPO].[nm_cam] AS [nm_cam], 
+    [TB_DOMINIO_CAMPO].[ds_vlrdmn] AS [ds_vlrdmn], 
+    [TB_DOMINIO_CAMPO].[ds_sgncam] AS [ds_sgncam], 
+    [TB_DOMINIO_CAMPO].[nm_tab] AS [nm_tab]
+    FROM [dbo].[TB_DOMINIO_CAMPO] AS [TB_DOMINIO_CAMPO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vPlanoInd" EntityType="Self.vPlanoInd" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vPlanoInd].[cdprodut] AS [cdprodut], 
+    [vPlanoInd].[dtinivig] AS [dtinivig], 
+    [vPlanoInd].[nrseqplnind] AS [nrseqplnind], 
+    [vPlanoInd].[dsplnind] AS [dsplnind], 
+    [vPlanoInd].[tpplnand] AS [tpplnand], 
+    [vPlanoInd].[vllimcjgbas] AS [vllimcjgbas], 
+    [vPlanoInd].[inresemg] AS [inresemg], 
+    [vPlanoInd].[vlresemg] AS [vlresemg], 
+    [vPlanoInd].[pcfilisbas] AS [pcfilisbas], 
+    [vPlanoInd].[pcfilprebas] AS [pcfilprebas], 
+    [vPlanoInd].[tpsal] AS [tpsal], 
+    [vPlanoInd].[qthormes] AS [qthormes], 
+    [vPlanoInd].[qtsalbas] AS [qtsalbas], 
+    [vPlanoInd].[tpfreqpl] AS [tpfreqpl], 
+    [vPlanoInd].[cdrefmon] AS [cdrefmon], 
+    [vPlanoInd].[cdcobert] AS [cdcobert], 
+    [vPlanoInd].[pciscobbas] AS [pciscobbas], 
+    [vPlanoInd].[vllimis] AS [vllimis], 
+    [vPlanoInd].[vllimismin] AS [vllimismin], 
+    [vPlanoInd].[pcprepur] AS [pcprepur], 
+    [vPlanoInd].[tpcobert] AS [tpcobert], 
+    [vPlanoInd].[cdidaini] AS [cdidaini], 
+    [vPlanoInd].[cdidafim] AS [cdidafim], 
+    [vPlanoInd].[pcprepur1] AS [pcprepur1], 
+    [vPlanoInd].[vllimis1] AS [vllimis1], 
+    [vPlanoInd].[vllimismin1] AS [vllimismin1], 
+    [vPlanoInd].[nmprodut] AS [nmprodut], 
+    [vPlanoInd].[nmcobert] AS [nmcobert], 
+    [vPlanoInd].[nmaramos] AS [nmaramos], 
+    [vPlanoInd].[indfaixa] AS [indfaixa], 
+    [vPlanoInd].[vlcsfixo] AS [vlcsfixo], 
+    [vPlanoInd].[vlcsfixo1] AS [vlcsfixo1], 
+    [vPlanoInd].[inbeneficio] AS [inbeneficio], 
+    [vPlanoInd].[vlbeneficio] AS [vlbeneficio], 
+    [vPlanoInd].[nrmaxparc] AS [nrmaxparc]
+    FROM [dbo].[vPlanoInd] AS [vPlanoInd]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO" Association="Self.FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO">
+            <End Role="TB_REGISTRO_PROCESSAMENTO" EntitySet="TB_REGISTRO_PROCESSAMENTO" />
+            <End Role="TB_DETALHE_REGISTRO" EntitySet="TB_DETALHE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO" Association="Self.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO">
+            <End Role="TB_REGISTRO_PROCESSAMENTO" EntitySet="TB_REGISTRO_PROCESSAMENTO" />
+            <End Role="TB_ERRO_REGISTRO" EntitySet="TB_ERRO_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO" Association="Self.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO">
+            <End Role="TB_LOG_PROCESSAMENTO" EntitySet="TB_LOG_PROCESSAMENTO" />
+            <End Role="TB_REGISTRO_PROCESSAMENTO" EntitySet="TB_REGISTRO_PROCESSAMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="fkArquivoPropostaDigitalDetalhexidPropostaDigital" Association="Self.fkArquivoPropostaDigitalDetalhexidPropostaDigital">
+            <End Role="ArquivoPropostaDigital" EntitySet="ArquivoPropostaDigital" />
+            <End Role="ArquivoPropostaDigitalDetalhe" EntitySet="ArquivoPropostaDigitalDetalhe" />
+          </AssociationSet>
+          <AssociationSet Name="fkArquivoPropostaDigitalDetalhexNrPpsCor" Association="Self.fkArquivoPropostaDigitalDetalhexNrPpsCor">
+            <End Role="ControleProposta" EntitySet="ControleProposta" />
+            <End Role="ArquivoPropostaDigitalDetalhe" EntitySet="ArquivoPropostaDigitalDetalhe" />
+          </AssociationSet>
+          <AssociationSet Name="fkCOLCPRP" Association="Self.fkCOLCPRP">
+            <End Role="Colaborador" EntitySet="Colaborador" />
+            <End Role="ControleProposta" EntitySet="ControleProposta" />
+          </AssociationSet>
+          <AssociationSet Name="fkPESCORRVIG" Association="Self.fkPESCORRVIG">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="CorretorVigencia" EntitySet="CorretorVigencia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AtivPessoa">
+          <Key>
+            <PropertyRef Name="cdativpes" />
+            <PropertyRef Name="tppes" />
+          </Key>
+          <Property Name="cdativpes" Type="Int16" Nullable="false" />
+          <Property Name="tppes" Type="Int16" Nullable="false" />
+          <Property Name="nmativpes" Type="String" MaxLength="200" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="codigoCNAE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="cdpescol" />
+          </Key>
+          <Property Name="cdpescol" Type="Int32" Nullable="false" />
+          <Property Name="cdempcol" Type="Int32" Nullable="false" />
+          <Property Name="nrcha" Type="Int32" Nullable="false" />
+          <Property Name="inrecprm" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tpfun" Type="Int16" Nullable="false" />
+          <Property Name="cdloc" Type="Int16" Nullable="false" />
+          <Property Name="stcol" Type="Int16" Nullable="false" />
+          <Property Name="cdhier" Type="Int32" />
+          <Property Name="tphier" Type="Int16" />
+          <Property Name="cdpescor" Type="Int32" />
+          <Property Name="cduni" Type="Int16" />
+          <NavigationProperty Name="ControleProposta" Relationship="Self.fkCOLCPRP" FromRole="Colaborador" ToRole="ControleProposta" />
+        </EntityType>
+        <EntityType Name="ControleProposta">
+          <Key>
+            <PropertyRef Name="nrppscor" />
+          </Key>
+          <Property Name="nrppscor" Type="Int32" Nullable="false" />
+          <Property Name="cdconseg" Type="Int32" />
+          <Property Name="dtprop" Type="DateTime" Precision="3" />
+          <Property Name="nmescritorio" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="nmusuari" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="nrnossonumero" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="stprop" Type="Int32" />
+          <Property Name="dtvenda" Type="DateTime" Precision="3" />
+          <Property Name="stmotivo" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="dtstatus" Type="DateTime" Precision="3" />
+          <Property Name="vlpretot" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="dtven" Type="DateTime" Precision="3" />
+          <Property Name="cdpescol" Type="Int32" />
+          <Property Name="incopinter" Type="Int16" />
+          <Property Name="dtcopinter" Type="DateTime" Precision="3" />
+          <Property Name="incopdig" Type="Int16" />
+          <Property Name="dtcopdig" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Colaborador" Relationship="Self.fkCOLCPRP" FromRole="ControleProposta" ToRole="Colaborador" />
+          <NavigationProperty Name="ArquivoPropostaDigitalDetalhe" Relationship="SiesModel.fkArquivoPropostaDigitalDetalhexNrPpsCor" FromRole="ControleProposta" ToRole="ArquivoPropostaDigitalDetalhe" />
+        </EntityType>
+        <EntityType Name="InterfaceSinafCobertura">
+          <Key>
+            <PropertyRef Name="cdcobert" />
+            <PropertyRef Name="cdid" />
+          </Key>
+          <Property Name="cdcobert" Type="Int16" Nullable="false" />
+          <Property Name="cdid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bcf" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cdtipofuneral" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="cdpes" />
+          </Key>
+          <Property Name="cdpes" Type="Int32" Nullable="false" />
+          <Property Name="tppes" Type="Int16" Nullable="false" />
+          <Property Name="nrcgccpf" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="nmpes" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cdadmcrocre" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="cdcrocre" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="dtvldcrocre" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tppgt" Type="Int16" Nullable="false" />
+          <Property Name="cditfful" Type="Int32" Nullable="false" />
+          <Property Name="nremp" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="tpcli" Type="Int16" Nullable="false" />
+          <Property Name="nrinsiap" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="tpclaisp" Type="Int16" Nullable="false" />
+          <Property Name="iniseiss" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="pciss" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="nriscmun" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="iniseir" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dtcad" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inmcremp" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nmcot" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nmfanpes" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nrinsest" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="iniseiof" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dtnas" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tpsex" Type="Int16" Nullable="false" />
+          <Property Name="stestciv" Type="Int16" Nullable="false" />
+          <Property Name="nrdepirf" Type="Int16" Nullable="false" />
+          <Property Name="inemintf" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="inretinss" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="incpf" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdativpes" Type="Int16" />
+          <Property Name="vlrendapes" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="nrrg" Type="Decimal" Precision="11" Scale="0" />
+          <Property Name="orgaoexprg" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="dtexprg" Type="DateTime" Precision="3" />
+          <Property Name="idpep" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fl_vlacpf" Type="Boolean" />
+          <NavigationProperty Name="CorretorVigencia" Relationship="SiesModel.fkPESCORRVIG" FromRole="Pessoa" ToRole="CorretorVigencia" />
+        </EntityType>
+        <EntityType Name="UnidadeCorretora">
+          <Key>
+            <PropertyRef Name="cdpescor" />
+            <PropertyRef Name="cduni" />
+          </Key>
+          <Property Name="cdpescor" Type="Int32" Nullable="false" />
+          <Property Name="cduni" Type="Int16" Nullable="false" />
+          <Property Name="dsuni" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="fkCOLCPRP">
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
+          <End Role="ControleProposta" Type="Self.ControleProposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaborador">
+              <PropertyRef Name="cdpescol" />
+            </Principal>
+            <Dependent Role="ControleProposta">
+              <PropertyRef Name="cdpescol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SiesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AtivPessoa" EntityType="Self.AtivPessoa" />
+          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" />
+          <EntitySet Name="ControleProposta" EntityType="Self.ControleProposta" />
+          <EntitySet Name="InterfaceSinafCobertura" EntityType="Self.InterfaceSinafCobertura" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
+          <EntitySet Name="UnidadeCorretora" EntityType="Self.UnidadeCorretora" />
+          <AssociationSet Name="fkCOLCPRP" Association="Self.fkCOLCPRP">
+            <End Role="Colaborador" EntitySet="Colaborador" />
+            <End Role="ControleProposta" EntitySet="ControleProposta" />
+          </AssociationSet>
+          <EntitySet Name="vPlanoInd" EntityType="SiesModel.vPlanoInd" />
+          <EntitySet Name="TB_DOMINIO_CAMPO" EntityType="SiesModel.TB_DOMINIO_CAMPO" />
+          <EntitySet Name="TB_LOG_PROCESSAMENTO" EntityType="SiesModel.TB_LOG_PROCESSAMENTO" />
+          <EntitySet Name="TB_REGISTRO_PROCESSAMENTO" EntityType="SiesModel.TB_REGISTRO_PROCESSAMENTO" />
+          <AssociationSet Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO" Association="SiesModel.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO">
+            <End Role="TB_LOG_PROCESSAMENTO" EntitySet="TB_LOG_PROCESSAMENTO" />
+            <End Role="TB_REGISTRO_PROCESSAMENTO" EntitySet="TB_REGISTRO_PROCESSAMENTO" />
+          </AssociationSet>
+          <EntitySet Name="TB_DETALHE_REGISTRO" EntityType="SiesModel.TB_DETALHE_REGISTRO" />
+          <EntitySet Name="TB_ERRO_REGISTRO" EntityType="SiesModel.TB_ERRO_REGISTRO" />
+          <AssociationSet Name="FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO" Association="SiesModel.FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO">
+            <End Role="TB_REGISTRO_PROCESSAMENTO" EntitySet="TB_REGISTRO_PROCESSAMENTO" />
+            <End Role="TB_DETALHE_REGISTRO" EntitySet="TB_DETALHE_REGISTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO" Association="SiesModel.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO">
+            <End Role="TB_REGISTRO_PROCESSAMENTO" EntitySet="TB_REGISTRO_PROCESSAMENTO" />
+            <End Role="TB_ERRO_REGISTRO" EntitySet="TB_ERRO_REGISTRO" />
+          </AssociationSet>
+          <EntitySet Name="ArquivoPropostaDigital" EntityType="SiesModel.ArquivoPropostaDigital" />
+          <EntitySet Name="ArquivoPropostaDigitalDetalhe" EntityType="SiesModel.ArquivoPropostaDigitalDetalhe" />
+          <AssociationSet Name="fkArquivoPropostaDigitalDetalhexidPropostaDigital" Association="SiesModel.fkArquivoPropostaDigitalDetalhexidPropostaDigital">
+            <End Role="ArquivoPropostaDigital" EntitySet="ArquivoPropostaDigital" />
+            <End Role="ArquivoPropostaDigitalDetalhe" EntitySet="ArquivoPropostaDigitalDetalhe" />
+          </AssociationSet>
+          <AssociationSet Name="fkArquivoPropostaDigitalDetalhexNrPpsCor" Association="SiesModel.fkArquivoPropostaDigitalDetalhexNrPpsCor">
+            <End Role="ControleProposta" EntitySet="ControleProposta" />
+            <End Role="ArquivoPropostaDigitalDetalhe" EntitySet="ArquivoPropostaDigitalDetalhe" />
+          </AssociationSet>
+          <EntitySet Name="CorretorVigencia" EntityType="SiesModel.CorretorVigencia" />
+          <AssociationSet Name="fkPESCORRVIG" Association="SiesModel.fkPESCORRVIG">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="CorretorVigencia" EntitySet="CorretorVigencia" />
+          </AssociationSet>
+          <EntitySet Name="PlanoAssistenciaSenior" EntityType="SiesModel.PlanoAssistenciaSenior" />
+          <EntitySet Name="Produto" EntityType="SiesModel.Produto" />
+          <EntitySet Name="VigCaractProduto" EntityType="SiesModel.VigCaractProduto" />
+          <EntitySet Name="Emissao" EntityType="SiesModel.Emissao" />
+          <EntitySet Name="ControleDataBatch" EntityType="SiesModel.ControleDataBatch" />
+          <EntitySet Name="ControleDataSistema" EntityType="SiesModel.ControleDataSistema" />
+        </EntityContainer>
+        <EntityType Name="vPlanoInd">
+          <Key>
+            <PropertyRef Name="cdprodut" />
+            <PropertyRef Name="dtinivig" />
+            <PropertyRef Name="nrseqplnind" />
+            <PropertyRef Name="dsplnind" />
+            <PropertyRef Name="tpplnand" />
+            <PropertyRef Name="vllimcjgbas" />
+            <PropertyRef Name="inresemg" />
+            <PropertyRef Name="vlresemg" />
+            <PropertyRef Name="pcfilisbas" />
+            <PropertyRef Name="pcfilprebas" />
+            <PropertyRef Name="tpsal" />
+            <PropertyRef Name="qthormes" />
+            <PropertyRef Name="qtsalbas" />
+            <PropertyRef Name="tpfreqpl" />
+            <PropertyRef Name="cdrefmon" />
+            <PropertyRef Name="cdcobert" />
+            <PropertyRef Name="pciscobbas" />
+            <PropertyRef Name="vllimis" />
+            <PropertyRef Name="pcprepur" />
+            <PropertyRef Name="tpcobert" />
+            <PropertyRef Name="nmprodut" />
+            <PropertyRef Name="nmcobert" />
+            <PropertyRef Name="nmaramos" />
+          </Key>
+          <Property Name="cdprodut" Type="Int16" Nullable="false" />
+          <Property Name="dtinivig" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nrseqplnind" Type="Int16" Nullable="false" />
+          <Property Name="dsplnind" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="tpplnand" Type="Int16" Nullable="false" />
+          <Property Name="vllimcjgbas" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="inresemg" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="vlresemg" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="pcfilisbas" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="pcfilprebas" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="tpsal" Type="Int16" Nullable="false" />
+          <Property Name="qthormes" Type="Int16" Nullable="false" />
+          <Property Name="qtsalbas" Type="Int16" Nullable="false" />
+          <Property Name="tpfreqpl" Type="Int16" Nullable="false" />
+          <Property Name="cdrefmon" Type="Int16" Nullable="false" />
+          <Property Name="cdcobert" Type="Int16" Nullable="false" />
+          <Property Name="pciscobbas" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="vllimis" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="vllimismin" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="pcprepur" Type="Decimal" Nullable="false" Precision="17" Scale="12" />
+          <Property Name="tpcobert" Type="Int16" Nullable="false" />
+          <Property Name="cdidaini" Type="Int32" />
+          <Property Name="cdidafim" Type="Int32" />
+          <Property Name="pcprepur1" Type="Decimal" Precision="17" Scale="12" />
+          <Property Name="vllimis1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="vllimismin1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="nmprodut" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nmcobert" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nmaramos" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="indfaixa" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="vlcsfixo" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="vlcsfixo1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="inbeneficio" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="vlbeneficio" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="nrmaxparc" Type="Int16" />
+        </EntityType>
+        <EntityType Name="TB_DOMINIO_CAMPO">
+          <Key>
+            <PropertyRef Name="nm_cam" />
+            <PropertyRef Name="ds_vlrdmn" />
+            <PropertyRef Name="ds_sgncam" />
+          </Key>
+          <Property Name="nm_cam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_vlrdmn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_sgncam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nm_tab" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_LOG_PROCESSAMENTO">
+          <Key>
+            <PropertyRef Name="cd_logpss" />
+          </Key>
+          <Property Name="cd_logpss" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_pss" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="cd_usu" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="dt_inipss" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dt_fimpss" Type="DateTime" Precision="3" />
+          <Property Name="qt_minpss" Type="Int32" />
+          <Property Name="qt_totreg" Type="Int32" />
+          <NavigationProperty Name="TB_REGISTRO_PROCESSAMENTO" Relationship="SiesModel.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO" FromRole="TB_LOG_PROCESSAMENTO" ToRole="TB_REGISTRO_PROCESSAMENTO" />
+        </EntityType>
+        <EntityType Name="TB_REGISTRO_PROCESSAMENTO">
+          <Key>
+            <PropertyRef Name="cd_regpss" />
+          </Key>
+          <Property Name="cd_regpss" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_logpss" Type="Int32" Nullable="false" />
+          <Property Name="st_regpss" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dt_sitreg" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TB_LOG_PROCESSAMENTO" Relationship="SiesModel.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO" FromRole="TB_REGISTRO_PROCESSAMENTO" ToRole="TB_LOG_PROCESSAMENTO" />
+          <NavigationProperty Name="TB_DETALHE_REGISTRO" Relationship="SiesModel.FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO" FromRole="TB_REGISTRO_PROCESSAMENTO" ToRole="TB_DETALHE_REGISTRO" />
+          <NavigationProperty Name="TB_ERRO_REGISTRO" Relationship="SiesModel.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO" FromRole="TB_REGISTRO_PROCESSAMENTO" ToRole="TB_ERRO_REGISTRO" />
+        </EntityType>
+        <Association Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_LOG_PROCESSAMENTO">
+          <End Type="SiesModel.TB_LOG_PROCESSAMENTO" Role="TB_LOG_PROCESSAMENTO" Multiplicity="1" />
+          <End Type="SiesModel.TB_REGISTRO_PROCESSAMENTO" Role="TB_REGISTRO_PROCESSAMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_LOG_PROCESSAMENTO">
+              <PropertyRef Name="cd_logpss" />
+            </Principal>
+            <Dependent Role="TB_REGISTRO_PROCESSAMENTO">
+              <PropertyRef Name="cd_logpss" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB_DETALHE_REGISTRO">
+          <Key>
+            <PropertyRef Name="cd_dtreg" />
+          </Key>
+          <Property Name="cd_dtreg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_regpss" Type="Int32" Nullable="false" />
+          <Property Name="cd_cam" Type="Int32" Nullable="false" />
+          <Property Name="vl_cam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_REGISTRO_PROCESSAMENTO" Relationship="SiesModel.FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO" FromRole="TB_DETALHE_REGISTRO" ToRole="TB_REGISTRO_PROCESSAMENTO" />
+        </EntityType>
+        <EntityType Name="TB_ERRO_REGISTRO">
+          <Key>
+            <PropertyRef Name="cd_erreg" />
+          </Key>
+          <Property Name="cd_erreg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_regpss" Type="Int32" Nullable="false" />
+          <Property Name="cd_err" Type="Int32" />
+          <Property Name="ds_msgerr" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_REGISTRO_PROCESSAMENTO" Relationship="SiesModel.FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO" FromRole="TB_ERRO_REGISTRO" ToRole="TB_REGISTRO_PROCESSAMENTO" />
+        </EntityType>
+        <Association Name="FK_TB_DETALHE_REGISTRO_X_TB_REGISTRO_PROCESSAMENTO">
+          <End Type="SiesModel.TB_REGISTRO_PROCESSAMENTO" Role="TB_REGISTRO_PROCESSAMENTO" Multiplicity="1" />
+          <End Type="SiesModel.TB_DETALHE_REGISTRO" Role="TB_DETALHE_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_REGISTRO_PROCESSAMENTO">
+              <PropertyRef Name="cd_regpss" />
+            </Principal>
+            <Dependent Role="TB_DETALHE_REGISTRO">
+              <PropertyRef Name="cd_regpss" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_REGISTRO_PROCESSAMENTO_X_TB_ERRO_REGISTRO">
+          <End Type="SiesModel.TB_REGISTRO_PROCESSAMENTO" Role="TB_REGISTRO_PROCESSAMENTO" Multiplicity="1" />
+          <End Type="SiesModel.TB_ERRO_REGISTRO" Role="TB_ERRO_REGISTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_REGISTRO_PROCESSAMENTO">
+              <PropertyRef Name="cd_regpss" />
+            </Principal>
+            <Dependent Role="TB_ERRO_REGISTRO">
+              <PropertyRef Name="cd_regpss" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ArquivoPropostaDigital">
+          <Key>
+            <PropertyRef Name="idArquivoPropostaDigital" />
+          </Key>
+          <Property Name="idArquivoPropostaDigital" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dataCadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="nomeArquivo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="quantidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArquivoPropostaDigitalDetalhe" Relationship="SiesModel.fkArquivoPropostaDigitalDetalhexidPropostaDigital" FromRole="ArquivoPropostaDigital" ToRole="ArquivoPropostaDigitalDetalhe" />
+        </EntityType>
+        <EntityType Name="ArquivoPropostaDigitalDetalhe">
+          <Key>
+            <PropertyRef Name="idArquivoPropostaDigitalDetalhe" />
+          </Key>
+          <Property Name="idArquivoPropostaDigitalDetalhe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idArquivoPropostaDigital" Type="Int32" Nullable="false" />
+          <Property Name="numeroProposta" Type="Int32" Nullable="false" />
+          <Property Name="externalKey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="statusProposta" Type="Int32" Nullable="false" />
+          <Property Name="json" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ArquivoPropostaDigital" Relationship="SiesModel.fkArquivoPropostaDigitalDetalhexidPropostaDigital" FromRole="ArquivoPropostaDigitalDetalhe" ToRole="ArquivoPropostaDigital" />
+          <NavigationProperty Name="ControleProposta" Relationship="SiesModel.fkArquivoPropostaDigitalDetalhexNrPpsCor" FromRole="ArquivoPropostaDigitalDetalhe" ToRole="ControleProposta" />
+        </EntityType>
+        <Association Name="fkArquivoPropostaDigitalDetalhexidPropostaDigital">
+          <End Type="SiesModel.ArquivoPropostaDigital" Role="ArquivoPropostaDigital" Multiplicity="1" />
+          <End Type="SiesModel.ArquivoPropostaDigitalDetalhe" Role="ArquivoPropostaDigitalDetalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArquivoPropostaDigital">
+              <PropertyRef Name="idArquivoPropostaDigital" />
+            </Principal>
+            <Dependent Role="ArquivoPropostaDigitalDetalhe">
+              <PropertyRef Name="idArquivoPropostaDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArquivoPropostaDigitalDetalhexNrPpsCor">
+          <End Type="SiesModel.ControleProposta" Role="ControleProposta" Multiplicity="1" />
+          <End Type="SiesModel.ArquivoPropostaDigitalDetalhe" Role="ArquivoPropostaDigitalDetalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ControleProposta">
+              <PropertyRef Name="nrppscor" />
+            </Principal>
+            <Dependent Role="ArquivoPropostaDigitalDetalhe">
+              <PropertyRef Name="numeroProposta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CorretorVigencia">
+          <Key>
+            <PropertyRef Name="cdpescor" />
+            <PropertyRef Name="dataInicioVigencia" />
+          </Key>
+          <Property Name="cdpescor" Type="Int32" Nullable="false" />
+          <Property Name="dataInicioVigencia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cdregsus" Type="Int32" Nullable="false" />
+          <Property Name="cdloc" Type="Int16" Nullable="false" />
+          <Property Name="dtregsus" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sgufregsus" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="incomant" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tpmeipgt" Type="Int16" Nullable="false" />
+          <Property Name="stcor" Type="Int16" Nullable="false" />
+          <Property Name="tpperpgt" Type="Int16" Nullable="false" />
+          <Property Name="cdorgprt" Type="Int32" Nullable="false" />
+          <Property Name="tporgprt" Type="Int16" Nullable="false" />
+          <Property Name="cdpesins" Type="Int32" />
+          <Property Name="inplataf" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdpescorpla" Type="Int32" />
+          <Property Name="cdpesterpla" Type="Int32" />
+          <Property Name="dtvalregsus" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Pessoa" Relationship="SiesModel.fkPESCORRVIG" FromRole="CorretorVigencia" ToRole="Pessoa" />
+        </EntityType>
+        <Association Name="fkPESCORRVIG">
+          <End Type="SiesModel.Pessoa" Role="Pessoa" Multiplicity="1" />
+          <End Type="SiesModel.CorretorVigencia" Role="CorretorVigencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="cdpes" />
+            </Principal>
+            <Dependent Role="CorretorVigencia">
+              <PropertyRef Name="cdpescor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlanoAssistenciaSenior">
+          <Key>
+            <PropertyRef Name="codigoProduto" />
+            <PropertyRef Name="dataVigencia" />
+            <PropertyRef Name="codigoPlano" />
+          </Key>
+          <Property Name="codigoProduto" Type="Int16" Nullable="false" />
+          <Property Name="dataVigencia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="codigoPlano" Type="Int16" Nullable="false" />
+          <Property Name="tipoPlano" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="cdprodut" />
+          </Key>
+          <Property Name="cdprodut" Type="Int16" Nullable="false" />
+          <Property Name="nmprodut" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nmaprodu" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="tpprodut" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdramosg" Type="Int16" Nullable="false" />
+          <Property Name="cdsubram" Type="Int16" Nullable="false" />
+          <Property Name="cdagrupr" Type="Int16" Nullable="false" />
+          <Property Name="dtatuali" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tpitemsg" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="tppadimp" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="idprodtpemi" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="idprodtppro" Type="Int16" />
+        </EntityType>
+        <EntityType Name="VigCaractProduto">
+          <Key>
+            <PropertyRef Name="cdprodut" />
+            <PropertyRef Name="dtinivig" />
+          </Key>
+          <Property Name="cdprodut" Type="Int16" Nullable="false" />
+          <Property Name="dtinivig" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtfimvig" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtlimenq" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="qtmincof" Type="Int16" Nullable="false" />
+          <Property Name="cdiratis" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdindcen" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="vlprmiap" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="vlprmien" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="vlprmifa" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="vlparmin" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="qtdiascp" Type="Int16" Nullable="false" />
+          <Property Name="qtdiasem" Type="Int16" Nullable="false" />
+          <Property Name="qtdiaser" Type="Int16" Nullable="false" />
+          <Property Name="pcdevfpa" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="pcdevsca" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="pcdepiaa" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="tprenova" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tpcorisr" Type="Int16" Nullable="false" />
+          <Property Name="cdindara" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdiendvm" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tpelevis" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="qtdiasec" Type="Int16" Nullable="false" />
+          <Property Name="qtdiasvd" Type="Int16" Nullable="false" />
+          <Property Name="pcmindef" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="tpfpelis" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdiimcgp" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdiimcgr" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdestobj" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dtatuali" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtlimper" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtaprova" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cdimptax" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdicusta" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdrmencb" Type="Int16" Nullable="false" />
+          <Property Name="cdrmprmi" Type="Int16" Nullable="false" />
+          <Property Name="cdrmreno" Type="Int16" Nullable="false" />
+          <Property Name="cdobjpro" Type="Int16" />
+          <Property Name="pccomant" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="qtdialimatsp" Type="Int16" Nullable="false" />
+          <Property Name="pcdiaats" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="vlmgdifbaixa" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="tpajuven" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="vllimmaxrisd" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="cdlimmaxrisd" Type="Int16" />
+          <Property Name="cdrmsin" Type="Int16" Nullable="false" />
+          <Property Name="indsalv" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="indress" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="qtdiasper" Type="Int16" />
+          <Property Name="vlmulta" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="cdvermn" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="cdprcsusep" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="paramDependentes" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Emissao">
+          <Key>
+            <PropertyRef Name="cdconseg" />
+            <PropertyRef Name="cdemi" />
+          </Key>
+          <Property Name="cdconseg" Type="Int32" Nullable="false" />
+          <Property Name="cdemi" Type="Int32" Nullable="false" />
+          <Property Name="nrpps" Type="Int32" Nullable="false" />
+          <Property Name="nrppscor" Type="Int32" Nullable="false" />
+          <Property Name="cdrmoseg" Type="Int16" Nullable="false" />
+          <Property Name="cdsmo" Type="Int16" Nullable="false" />
+          <Property Name="nrapo" Type="Int32" Nullable="false" />
+          <Property Name="nreds" Type="Int32" Nullable="false" />
+          <Property Name="tpemi" Type="Int16" Nullable="false" />
+          <Property Name="tpestemi" Type="Int16" Nullable="false" />
+          <Property Name="tpope" Type="Int16" Nullable="false" />
+          <Property Name="tpeds" Type="Int16" Nullable="false" />
+          <Property Name="dtcotpps" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtefepps" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtemi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtinivig" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtfimvig" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="pcnospte" Type="Decimal" Nullable="false" Precision="9" Scale="6" />
+          <Property Name="pcmdicom" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="nratasor" Type="Int32" Nullable="false" />
+          <Property Name="nrcmnsegvul" Type="Decimal" Nullable="false" Precision="15" Scale="0" />
+          <Property Name="nrordcosact" Type="Int32" Nullable="false" />
+          <Property Name="tpnivcom" Type="Int16" Nullable="false" />
+          <Property Name="tprcrrtt" Type="Int16" Nullable="false" />
+          <Property Name="incalparpre" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="incalparcom" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="incalparces" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="inrcliof" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="incbajur" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="incbacstapo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="txpdapre" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="cdrefmonpre" Type="Int16" Nullable="false" />
+          <Property Name="cdrefmonis" Type="Int16" Nullable="false" />
+          <Property Name="dtcvspre" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtcvsis" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vlistotinf" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="dtatasor" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vlpretotemi" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="tpprt" Type="Int16" Nullable="false" />
+          <Property Name="stitf" Type="Int16" Nullable="false" />
+          <Property Name="cdorgprtsuc" Type="Int32" />
+          <Property Name="tporgprtsuc" Type="Int16" />
+          <Property Name="cdorgprtemp" Type="Int32" />
+          <Property Name="tporgprtemp" Type="Int16" />
+          <Property Name="dtbasecalc" Type="DateTime" Precision="3" />
+          <Property Name="dtresseguro" Type="DateTime" Precision="3" />
+          <Property Name="incancemi" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tpmotrecusa" Type="Int16" />
+          <Property Name="vllimind" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="idrecusared" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cdmotrecusared" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ControleDataBatch">
+          <Key>
+            <PropertyRef Name="cdprosis" />
+          </Key>
+          <Property Name="cdprosis" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="dtultdiaria" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ControleDataSistema">
+          <Key>
+            <PropertyRef Name="dtultdiaria" />
+            <PropertyRef Name="dtdiariaatual" />
+            <PropertyRef Name="dtultmensal" />
+            <PropertyRef Name="dtproxmensal" />
+            <PropertyRef Name="dtcompetcontab" />
+          </Key>
+          <Property Name="dtultdiaria" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtdiariaatual" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtultmensal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtproxmensal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtcompetcontab" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtmesrefultcontab" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SiesModelStoreContainer" CdmEntityContainer="SiesEntities">
+          <EntitySetMapping Name="AtivPessoa">
+            <EntityTypeMapping TypeName="SiesModel.AtivPessoa">
+              <MappingFragment StoreEntitySet="AtivPessoa">
+                <ScalarProperty Name="codigoCNAE" ColumnName="codigoCNAE" />
+                <ScalarProperty Name="cdativpes" ColumnName="cdativpes" />
+                <ScalarProperty Name="tppes" ColumnName="tppes" />
+                <ScalarProperty Name="nmativpes" ColumnName="nmativpes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colaborador">
+            <EntityTypeMapping TypeName="SiesModel.Colaborador">
+              <MappingFragment StoreEntitySet="Colaborador">
+                <ScalarProperty Name="cdpescol" ColumnName="cdpescol" />
+                <ScalarProperty Name="cdempcol" ColumnName="cdempcol" />
+                <ScalarProperty Name="nrcha" ColumnName="nrcha" />
+                <ScalarProperty Name="inrecprm" ColumnName="inrecprm" />
+                <ScalarProperty Name="tpfun" ColumnName="tpfun" />
+                <ScalarProperty Name="cdloc" ColumnName="cdloc" />
+                <ScalarProperty Name="stcol" ColumnName="stcol" />
+                <ScalarProperty Name="cdhier" ColumnName="cdhier" />
+                <ScalarProperty Name="tphier" ColumnName="tphier" />
+                <ScalarProperty Name="cdpescor" ColumnName="cdpescor" />
+                <ScalarProperty Name="cduni" ColumnName="cduni" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ControleProposta">
+            <EntityTypeMapping TypeName="SiesModel.ControleProposta">
+              <MappingFragment StoreEntitySet="ControleProposta">
+                <ScalarProperty Name="nrppscor" ColumnName="nrppscor" />
+                <ScalarProperty Name="cdconseg" ColumnName="cdconseg" />
+                <ScalarProperty Name="dtprop" ColumnName="dtprop" />
+                <ScalarProperty Name="nmescritorio" ColumnName="nmescritorio" />
+                <ScalarProperty Name="nmusuari" ColumnName="nmusuari" />
+                <ScalarProperty Name="nrnossonumero" ColumnName="nrnossonumero" />
+                <ScalarProperty Name="stprop" ColumnName="stprop" />
+                <ScalarProperty Name="dtvenda" ColumnName="dtvenda" />
+                <ScalarProperty Name="stmotivo" ColumnName="stmotivo" />
+                <ScalarProperty Name="dtstatus" ColumnName="dtstatus" />
+                <ScalarProperty Name="vlpretot" ColumnName="vlpretot" />
+                <ScalarProperty Name="dtven" ColumnName="dtven" />
+                <ScalarProperty Name="cdpescol" ColumnName="cdpescol" />
+                <ScalarProperty Name="incopinter" ColumnName="incopinter" />
+                <ScalarProperty Name="dtcopinter" ColumnName="dtcopinter" />
+                <ScalarProperty Name="incopdig" ColumnName="incopdig" />
+                <ScalarProperty Name="dtcopdig" ColumnName="dtcopdig" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InterfaceSinafCobertura">
+            <EntityTypeMapping TypeName="SiesModel.InterfaceSinafCobertura">
+              <MappingFragment StoreEntitySet="InterfaceSinafCobertura">
+                <ScalarProperty Name="cdcobert" ColumnName="cdcobert" />
+                <ScalarProperty Name="cdid" ColumnName="cdid" />
+                <ScalarProperty Name="bcf" ColumnName="bcf" />
+                <ScalarProperty Name="cdtipofuneral" ColumnName="cdtipofuneral" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pessoa">
+            <EntityTypeMapping TypeName="SiesModel.Pessoa">
+              <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="cdpes" ColumnName="cdpes" />
+                <ScalarProperty Name="tppes" ColumnName="tppes" />
+                <ScalarProperty Name="nrcgccpf" ColumnName="nrcgccpf" />
+                <ScalarProperty Name="nmpes" ColumnName="nmpes" />
+                <ScalarProperty Name="cdadmcrocre" ColumnName="cdadmcrocre" />
+                <ScalarProperty Name="cdcrocre" ColumnName="cdcrocre" />
+                <ScalarProperty Name="dtvldcrocre" ColumnName="dtvldcrocre" />
+                <ScalarProperty Name="tppgt" ColumnName="tppgt" />
+                <ScalarProperty Name="cditfful" ColumnName="cditfful" />
+                <ScalarProperty Name="nremp" ColumnName="nremp" />
+                <ScalarProperty Name="tpcli" ColumnName="tpcli" />
+                <ScalarProperty Name="nrinsiap" ColumnName="nrinsiap" />
+                <ScalarProperty Name="tpclaisp" ColumnName="tpclaisp" />
+                <ScalarProperty Name="iniseiss" ColumnName="iniseiss" />
+                <ScalarProperty Name="pciss" ColumnName="pciss" />
+                <ScalarProperty Name="nriscmun" ColumnName="nriscmun" />
+                <ScalarProperty Name="iniseir" ColumnName="iniseir" />
+                <ScalarProperty Name="dtcad" ColumnName="dtcad" />
+                <ScalarProperty Name="inmcremp" ColumnName="inmcremp" />
+                <ScalarProperty Name="nmcot" ColumnName="nmcot" />
+                <ScalarProperty Name="nmfanpes" ColumnName="nmfanpes" />
+                <ScalarProperty Name="nrinsest" ColumnName="nrinsest" />
+                <ScalarProperty Name="iniseiof" ColumnName="iniseiof" />
+                <ScalarProperty Name="dtnas" ColumnName="dtnas" />
+                <ScalarProperty Name="tpsex" ColumnName="tpsex" />
+                <ScalarProperty Name="stestciv" ColumnName="stestciv" />
+                <ScalarProperty Name="nrdepirf" ColumnName="nrdepirf" />
+                <ScalarProperty Name="inemintf" ColumnName="inemintf" />
+                <ScalarProperty Name="inretinss" ColumnName="inretinss" />
+                <ScalarProperty Name="incpf" ColumnName="incpf" />
+                <ScalarProperty Name="cdativpes" ColumnName="cdativpes" />
+                <ScalarProperty Name="vlrendapes" ColumnName="vlrendapes" />
+                <ScalarProperty Name="nrrg" ColumnName="nrrg" />
+                <ScalarProperty Name="orgaoexprg" ColumnName="orgaoexprg" />
+                <ScalarProperty Name="dtexprg" ColumnName="dtexprg" />
+                <ScalarProperty Name="idpep" ColumnName="idpep" />
+                <ScalarProperty Name="fl_vlacpf" ColumnName="fl_vlacpf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadeCorretora">
+            <EntityTypeMapping TypeName="SiesModel.UnidadeCorretora">
+              <MappingFragment StoreEntitySet="UnidadeCorretora">
+                <ScalarProperty Name="cdpescor" ColumnName="cdpescor" />
+                <ScalarProperty Name="cduni" ColumnName="cduni" />
+                <ScalarProperty Name="dsuni" ColumnName="dsuni" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vPlanoInd">
+            <EntityTypeMapping TypeName="SiesModel.vPlanoInd">
+              <MappingFragment StoreEntitySet="vPlanoInd">
+                <ScalarProperty Name="nrmaxparc" ColumnName="nrmaxparc" />
+                <ScalarProperty Name="vlbeneficio" ColumnName="vlbeneficio" />
+                <ScalarProperty Name="inbeneficio" ColumnName="inbeneficio" />
+                <ScalarProperty Name="vlcsfixo1" ColumnName="vlcsfixo1" />
+                <ScalarProperty Name="vlcsfixo" ColumnName="vlcsfixo" />
+                <ScalarProperty Name="indfaixa" ColumnName="indfaixa" />
+                <ScalarProperty Name="nmaramos" ColumnName="nmaramos" />
+                <ScalarProperty Name="nmcobert" ColumnName="nmcobert" />
+                <ScalarProperty Name="nmprodut" ColumnName="nmprodut" />
+                <ScalarProperty Name="vllimismin1" ColumnName="vllimismin1" />
+                <ScalarProperty Name="vllimis1" ColumnName="vllimis1" />
+                <ScalarProperty Name="pcprepur1" ColumnName="pcprepur1" />
+                <ScalarProperty Name="cdidafim" ColumnName="cdidafim" />
+                <ScalarProperty Name="cdidaini" ColumnName="cdidaini" />
+                <ScalarProperty Name="tpcobert" ColumnName="tpcobert" />
+                <ScalarProperty Name="pcprepur" ColumnName="pcprepur" />
+                <ScalarProperty Name="vllimismin" ColumnName="vllimismin" />
+                <ScalarProperty Name="vllimis" ColumnName="vllimis" />
+                <ScalarProperty Name="pciscobbas" ColumnName="pciscobbas" />
+                <ScalarProperty Name="cdcobert" ColumnName="cdcobert" />
+                <ScalarProperty Name="cdrefmon" ColumnName="cdrefmon" />
+                <ScalarProperty Name="tpfreqpl" ColumnName="tpfreqpl" />
+                <ScalarProperty Name="qtsalbas" ColumnName="qtsalbas" />
+                <ScalarProperty Name="qthormes" ColumnName="qthormes" />
+                <ScalarProperty Name="tpsal" ColumnName="tpsal" />
+                <ScalarProperty Name="pcfilprebas" ColumnName="pcfilprebas" />
+                <ScalarProperty Name="pcfilisbas" ColumnName="pcfilisbas" />
+                <ScalarProperty Name="vlresemg" ColumnName="vlresemg" />
+                <ScalarProperty Name="inresemg" ColumnName="inresemg" />
+                <ScalarProperty Name="vllimcjgbas" ColumnName="vllimcjgbas" />
+                <ScalarProperty Name="tpplnand" ColumnName="tpplnand" />
+                <ScalarProperty Name="dsplnind" ColumnName="dsplnind" />
+                <ScalarProperty Name="nrseqplnind" ColumnName="nrseqplnind" />
+                <ScalarProperty Name="dtinivig" ColumnName="dtinivig" />
+                <ScalarProperty Name="cdprodut" ColumnName="cdprodut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_DOMINIO_CAMPO">
+            <EntityTypeMapping TypeName="SiesModel.TB_DOMINIO_CAMPO">
+              <MappingFragment StoreEntitySet="TB_DOMINIO_CAMPO">
+                <ScalarProperty Name="nm_tab" ColumnName="nm_tab" />
+                <ScalarProperty Name="ds_sgncam" ColumnName="ds_sgncam" />
+                <ScalarProperty Name="ds_vlrdmn" ColumnName="ds_vlrdmn" />
+                <ScalarProperty Name="nm_cam" ColumnName="nm_cam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_LOG_PROCESSAMENTO">
+            <EntityTypeMapping TypeName="SiesModel.TB_LOG_PROCESSAMENTO">
+              <MappingFragment StoreEntitySet="TB_LOG_PROCESSAMENTO">
+                <ScalarProperty Name="qt_totreg" ColumnName="qt_totreg" />
+                <ScalarProperty Name="qt_minpss" ColumnName="qt_minpss" />
+                <ScalarProperty Name="dt_fimpss" ColumnName="dt_fimpss" />
+                <ScalarProperty Name="dt_inipss" ColumnName="dt_inipss" />
+                <ScalarProperty Name="cd_usu" ColumnName="cd_usu" />
+                <ScalarProperty Name="cd_pss" ColumnName="cd_pss" />
+                <ScalarProperty Name="cd_logpss" ColumnName="cd_logpss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_REGISTRO_PROCESSAMENTO">
+            <EntityTypeMapping TypeName="SiesModel.TB_REGISTRO_PROCESSAMENTO">
+              <MappingFragment StoreEntitySet="TB_REGISTRO_PROCESSAMENTO">
+                <ScalarProperty Name="dt_sitreg" ColumnName="dt_sitreg" />
+                <ScalarProperty Name="st_regpss" ColumnName="st_regpss" />
+                <ScalarProperty Name="cd_logpss" ColumnName="cd_logpss" />
+                <ScalarProperty Name="cd_regpss" ColumnName="cd_regpss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_DETALHE_REGISTRO">
+            <EntityTypeMapping TypeName="SiesModel.TB_DETALHE_REGISTRO">
+              <MappingFragment StoreEntitySet="TB_DETALHE_REGISTRO">
+                <ScalarProperty Name="vl_cam" ColumnName="vl_cam" />
+                <ScalarProperty Name="cd_cam" ColumnName="cd_cam" />
+                <ScalarProperty Name="cd_regpss" ColumnName="cd_regpss" />
+                <ScalarProperty Name="cd_dtreg" ColumnName="cd_dtreg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ERRO_REGISTRO">
+            <EntityTypeMapping TypeName="SiesModel.TB_ERRO_REGISTRO">
+              <MappingFragment StoreEntitySet="TB_ERRO_REGISTRO">
+                <ScalarProperty Name="ds_msgerr" ColumnName="ds_msgerr" />
+                <ScalarProperty Name="cd_err" ColumnName="cd_err" />
+                <ScalarProperty Name="cd_regpss" ColumnName="cd_regpss" />
+                <ScalarProperty Name="cd_erreg" ColumnName="cd_erreg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArquivoPropostaDigital">
+            <EntityTypeMapping TypeName="SiesModel.ArquivoPropostaDigital">
+              <MappingFragment StoreEntitySet="ArquivoPropostaDigital">
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="nomeArquivo" ColumnName="nomeArquivo" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+                <ScalarProperty Name="idArquivoPropostaDigital" ColumnName="idArquivoPropostaDigital" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArquivoPropostaDigitalDetalhe">
+            <EntityTypeMapping TypeName="SiesModel.ArquivoPropostaDigitalDetalhe">
+              <MappingFragment StoreEntitySet="ArquivoPropostaDigitalDetalhe">
+                <ScalarProperty Name="json" ColumnName="json" />
+                <ScalarProperty Name="statusProposta" ColumnName="statusProposta" />
+                <ScalarProperty Name="externalKey" ColumnName="externalKey" />
+                <ScalarProperty Name="numeroProposta" ColumnName="numeroProposta" />
+                <ScalarProperty Name="idArquivoPropostaDigital" ColumnName="idArquivoPropostaDigital" />
+                <ScalarProperty Name="idArquivoPropostaDigitalDetalhe" ColumnName="idArquivoPropostaDigitalDetalhe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorretorVigencia">
+            <EntityTypeMapping TypeName="SiesModel.CorretorVigencia">
+              <MappingFragment StoreEntitySet="CorretorVigencia">
+                <ScalarProperty Name="dtvalregsus" ColumnName="dtvalregsus" />
+                <ScalarProperty Name="cdpesterpla" ColumnName="cdpesterpla" />
+                <ScalarProperty Name="cdpescorpla" ColumnName="cdpescorpla" />
+                <ScalarProperty Name="inplataf" ColumnName="inplataf" />
+                <ScalarProperty Name="cdpesins" ColumnName="cdpesins" />
+                <ScalarProperty Name="tporgprt" ColumnName="tporgprt" />
+                <ScalarProperty Name="cdorgprt" ColumnName="cdorgprt" />
+                <ScalarProperty Name="tpperpgt" ColumnName="tpperpgt" />
+                <ScalarProperty Name="stcor" ColumnName="stcor" />
+                <ScalarProperty Name="tpmeipgt" ColumnName="tpmeipgt" />
+                <ScalarProperty Name="incomant" ColumnName="incomant" />
+                <ScalarProperty Name="sgufregsus" ColumnName="sgufregsus" />
+                <ScalarProperty Name="dtregsus" ColumnName="dtregsus" />
+                <ScalarProperty Name="cdloc" ColumnName="cdloc" />
+                <ScalarProperty Name="cdregsus" ColumnName="cdregsus" />
+                <ScalarProperty Name="dataInicioVigencia" ColumnName="dataInicioVigencia" />
+                <ScalarProperty Name="cdpescor" ColumnName="cdpescor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanoAssistenciaSenior">
+            <EntityTypeMapping TypeName="SiesModel.PlanoAssistenciaSenior">
+              <MappingFragment StoreEntitySet="PlanoAssistenciaSenior">
+                <ScalarProperty Name="tipoPlano" ColumnName="tipoPlano" />
+                <ScalarProperty Name="codigoPlano" ColumnName="codigoPlano" />
+                <ScalarProperty Name="dataVigencia" ColumnName="dataVigencia" />
+                <ScalarProperty Name="codigoProduto" ColumnName="codigoProduto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produto">
+            <EntityTypeMapping TypeName="SiesModel.Produto">
+              <MappingFragment StoreEntitySet="Produto">
+                <ScalarProperty Name="idprodtppro" ColumnName="idprodtppro" />
+                <ScalarProperty Name="idprodtpemi" ColumnName="idprodtpemi" />
+                <ScalarProperty Name="tppadimp" ColumnName="tppadimp" />
+                <ScalarProperty Name="tpitemsg" ColumnName="tpitemsg" />
+                <ScalarProperty Name="dtatuali" ColumnName="dtatuali" />
+                <ScalarProperty Name="cdagrupr" ColumnName="cdagrupr" />
+                <ScalarProperty Name="cdsubram" ColumnName="cdsubram" />
+                <ScalarProperty Name="cdramosg" ColumnName="cdramosg" />
+                <ScalarProperty Name="tpprodut" ColumnName="tpprodut" />
+                <ScalarProperty Name="nmaprodu" ColumnName="nmaprodu" />
+                <ScalarProperty Name="nmprodut" ColumnName="nmprodut" />
+                <ScalarProperty Name="cdprodut" ColumnName="cdprodut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VigCaractProduto">
+            <EntityTypeMapping TypeName="SiesModel.VigCaractProduto">
+              <MappingFragment StoreEntitySet="VigCaractProduto">
+                <ScalarProperty Name="paramDependentes" ColumnName="paramDependentes" />
+                <ScalarProperty Name="cdprcsusep" ColumnName="cdprcsusep" />
+                <ScalarProperty Name="cdvermn" ColumnName="cdvermn" />
+                <ScalarProperty Name="vlmulta" ColumnName="vlmulta" />
+                <ScalarProperty Name="qtdiasper" ColumnName="qtdiasper" />
+                <ScalarProperty Name="indress" ColumnName="indress" />
+                <ScalarProperty Name="indsalv" ColumnName="indsalv" />
+                <ScalarProperty Name="cdrmsin" ColumnName="cdrmsin" />
+                <ScalarProperty Name="cdlimmaxrisd" ColumnName="cdlimmaxrisd" />
+                <ScalarProperty Name="vllimmaxrisd" ColumnName="vllimmaxrisd" />
+                <ScalarProperty Name="tpajuven" ColumnName="tpajuven" />
+                <ScalarProperty Name="vlmgdifbaixa" ColumnName="vlmgdifbaixa" />
+                <ScalarProperty Name="pcdiaats" ColumnName="pcdiaats" />
+                <ScalarProperty Name="qtdialimatsp" ColumnName="qtdialimatsp" />
+                <ScalarProperty Name="pccomant" ColumnName="pccomant" />
+                <ScalarProperty Name="cdobjpro" ColumnName="cdobjpro" />
+                <ScalarProperty Name="cdrmreno" ColumnName="cdrmreno" />
+                <ScalarProperty Name="cdrmprmi" ColumnName="cdrmprmi" />
+                <ScalarProperty Name="cdrmencb" ColumnName="cdrmencb" />
+                <ScalarProperty Name="cdicusta" ColumnName="cdicusta" />
+                <ScalarProperty Name="cdimptax" ColumnName="cdimptax" />
+                <ScalarProperty Name="dtaprova" ColumnName="dtaprova" />
+                <ScalarProperty Name="dtlimper" ColumnName="dtlimper" />
+                <ScalarProperty Name="dtatuali" ColumnName="dtatuali" />
+                <ScalarProperty Name="cdestobj" ColumnName="cdestobj" />
+                <ScalarProperty Name="cdiimcgr" ColumnName="cdiimcgr" />
+                <ScalarProperty Name="cdiimcgp" ColumnName="cdiimcgp" />
+                <ScalarProperty Name="tpfpelis" ColumnName="tpfpelis" />
+                <ScalarProperty Name="pcmindef" ColumnName="pcmindef" />
+                <ScalarProperty Name="qtdiasvd" ColumnName="qtdiasvd" />
+                <ScalarProperty Name="qtdiasec" ColumnName="qtdiasec" />
+                <ScalarProperty Name="tpelevis" ColumnName="tpelevis" />
+                <ScalarProperty Name="cdiendvm" ColumnName="cdiendvm" />
+                <ScalarProperty Name="cdindara" ColumnName="cdindara" />
+                <ScalarProperty Name="tpcorisr" ColumnName="tpcorisr" />
+                <ScalarProperty Name="tprenova" ColumnName="tprenova" />
+                <ScalarProperty Name="pcdepiaa" ColumnName="pcdepiaa" />
+                <ScalarProperty Name="pcdevsca" ColumnName="pcdevsca" />
+                <ScalarProperty Name="pcdevfpa" ColumnName="pcdevfpa" />
+                <ScalarProperty Name="qtdiaser" ColumnName="qtdiaser" />
+                <ScalarProperty Name="qtdiasem" ColumnName="qtdiasem" />
+                <ScalarProperty Name="qtdiascp" ColumnName="qtdiascp" />
+                <ScalarProperty Name="vlparmin" ColumnName="vlparmin" />
+                <ScalarProperty Name="vlprmifa" ColumnName="vlprmifa" />
+                <ScalarProperty Name="vlprmien" ColumnName="vlprmien" />
+                <ScalarProperty Name="vlprmiap" ColumnName="vlprmiap" />
+                <ScalarProperty Name="cdindcen" ColumnName="cdindcen" />
+                <ScalarProperty Name="cdiratis" ColumnName="cdiratis" />
+                <ScalarProperty Name="qtmincof" ColumnName="qtmincof" />
+                <ScalarProperty Name="dtlimenq" ColumnName="dtlimenq" />
+                <ScalarProperty Name="dtfimvig" ColumnName="dtfimvig" />
+                <ScalarProperty Name="dtinivig" ColumnName="dtinivig" />
+                <ScalarProperty Name="cdprodut" ColumnName="cdprodut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emissao">
+            <EntityTypeMapping TypeName="SiesModel.Emissao">
+              <MappingFragment StoreEntitySet="Emissao">
+                <ScalarProperty Name="cdmotrecusared" ColumnName="cdmotrecusared" />
+                <ScalarProperty Name="idrecusared" ColumnName="idrecusared" />
+                <ScalarProperty Name="vllimind" ColumnName="vllimind" />
+                <ScalarProperty Name="tpmotrecusa" ColumnName="tpmotrecusa" />
+                <ScalarProperty Name="incancemi" ColumnName="incancemi" />
+                <ScalarProperty Name="dtresseguro" ColumnName="dtresseguro" />
+                <ScalarProperty Name="dtbasecalc" ColumnName="dtbasecalc" />
+                <ScalarProperty Name="tporgprtemp" ColumnName="tporgprtemp" />
+                <ScalarProperty Name="cdorgprtemp" ColumnName="cdorgprtemp" />
+                <ScalarProperty Name="tporgprtsuc" ColumnName="tporgprtsuc" />
+                <ScalarProperty Name="cdorgprtsuc" ColumnName="cdorgprtsuc" />
+                <ScalarProperty Name="stitf" ColumnName="stitf" />
+                <ScalarProperty Name="tpprt" ColumnName="tpprt" />
+                <ScalarProperty Name="vlpretotemi" ColumnName="vlpretotemi" />
+                <ScalarProperty Name="dtatasor" ColumnName="dtatasor" />
+                <ScalarProperty Name="vlistotinf" ColumnName="vlistotinf" />
+                <ScalarProperty Name="dtcvsis" ColumnName="dtcvsis" />
+                <ScalarProperty Name="dtcvspre" ColumnName="dtcvspre" />
+                <ScalarProperty Name="cdrefmonis" ColumnName="cdrefmonis" />
+                <ScalarProperty Name="cdrefmonpre" ColumnName="cdrefmonpre" />
+                <ScalarProperty Name="txpdapre" ColumnName="txpdapre" />
+                <ScalarProperty Name="incbacstapo" ColumnName="incbacstapo" />
+                <ScalarProperty Name="incbajur" ColumnName="incbajur" />
+                <ScalarProperty Name="inrcliof" ColumnName="inrcliof" />
+                <ScalarProperty Name="incalparces" ColumnName="incalparces" />
+                <ScalarProperty Name="incalparcom" ColumnName="incalparcom" />
+                <ScalarProperty Name="incalparpre" ColumnName="incalparpre" />
+                <ScalarProperty Name="tprcrrtt" ColumnName="tprcrrtt" />
+                <ScalarProperty Name="tpnivcom" ColumnName="tpnivcom" />
+                <ScalarProperty Name="nrordcosact" ColumnName="nrordcosact" />
+                <ScalarProperty Name="nrcmnsegvul" ColumnName="nrcmnsegvul" />
+                <ScalarProperty Name="nratasor" ColumnName="nratasor" />
+                <ScalarProperty Name="pcmdicom" ColumnName="pcmdicom" />
+                <ScalarProperty Name="pcnospte" ColumnName="pcnospte" />
+                <ScalarProperty Name="dtfimvig" ColumnName="dtfimvig" />
+                <ScalarProperty Name="dtinivig" ColumnName="dtinivig" />
+                <ScalarProperty Name="dtemi" ColumnName="dtemi" />
+                <ScalarProperty Name="dtefepps" ColumnName="dtefepps" />
+                <ScalarProperty Name="dtcotpps" ColumnName="dtcotpps" />
+                <ScalarProperty Name="tpeds" ColumnName="tpeds" />
+                <ScalarProperty Name="tpope" ColumnName="tpope" />
+                <ScalarProperty Name="tpestemi" ColumnName="tpestemi" />
+                <ScalarProperty Name="tpemi" ColumnName="tpemi" />
+                <ScalarProperty Name="nreds" ColumnName="nreds" />
+                <ScalarProperty Name="nrapo" ColumnName="nrapo" />
+                <ScalarProperty Name="cdsmo" ColumnName="cdsmo" />
+                <ScalarProperty Name="cdrmoseg" ColumnName="cdrmoseg" />
+                <ScalarProperty Name="nrppscor" ColumnName="nrppscor" />
+                <ScalarProperty Name="nrpps" ColumnName="nrpps" />
+                <ScalarProperty Name="cdemi" ColumnName="cdemi" />
+                <ScalarProperty Name="cdconseg" ColumnName="cdconseg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ControleDataBatch">
+            <EntityTypeMapping TypeName="SiesModel.ControleDataBatch">
+              <MappingFragment StoreEntitySet="ControleDataBatch">
+                <ScalarProperty Name="dtultdiaria" ColumnName="dtultdiaria" />
+                <ScalarProperty Name="cdprosis" ColumnName="cdprosis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ControleDataSistema">
+            <EntityTypeMapping TypeName="SiesModel.ControleDataSistema">
+              <MappingFragment StoreEntitySet="ControleDataSistema">
+                <ScalarProperty Name="dtmesrefultcontab" ColumnName="dtmesrefultcontab" />
+                <ScalarProperty Name="dtcompetcontab" ColumnName="dtcompetcontab" />
+                <ScalarProperty Name="dtproxmensal" ColumnName="dtproxmensal" />
+                <ScalarProperty Name="dtultmensal" ColumnName="dtultmensal" />
+                <ScalarProperty Name="dtdiariaatual" ColumnName="dtdiariaatual" />
+                <ScalarProperty Name="dtultdiaria" ColumnName="dtultdiaria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
